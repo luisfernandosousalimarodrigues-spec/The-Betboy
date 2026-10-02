@@ -3,286 +3,232 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Mini Cassino Fictício</title>
+<title>BetBoy</title>
 <style>
-  :root {
-    --feltro: #0f2a1f;
-    --feltro-claro: #17402f;
-    --ouro: #f2c14e;
-    --marfim: #f6f1e3;
-    --vermelho: #d64545;
-    --carvao: #22262e;
-    --verde: #3fb77a;
-  }
-  * { box-sizing: border-box; }
-  body {
-    margin: 0;
-    min-height: 100vh;
-    background: var(--feltro);
-    color: var(--marfim);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    padding: env(safe-area-inset-top, 0) 0 env(safe-area-inset-bottom, 0);
-  }
-  main { max-width: 480px; margin: 0 auto; padding: 16px; }
-  h1, h2 { font-family: Georgia, "Times New Roman", serif; margin: 0; }
-  h1 { font-size: 2rem; color: var(--ouro); }
-  .aviso {
-    font-size: .8rem; text-align: center; padding: 8px 12px;
-    background: #0a1a13; border-bottom: 1px solid var(--feltro-claro);
-  }
-  .topo { display: flex; justify-content: space-between; align-items: center; margin: 16px 0; }
-  .saldo { text-align: right; }
-  .saldo small { display: block; color: #b9c7bd; font-size: .75rem; }
-  .saldo strong { font-size: 1.6rem; color: var(--ouro); }
-  .tela { display: none; }
-  .tela.ativa { display: block; }
-  .jogo {
-    display: block; width: 100%; text-align: left; margin-bottom: 12px;
-    padding: 18px; border-radius: 14px; border: 1px solid var(--ouro);
-    background: var(--feltro-claro); color: var(--marfim); cursor: pointer;
-  }
-  .jogo h2 { font-size: 1.3rem; }
-  .jogo span { color: #b9c7bd; font-size: .9rem; }
-  button { font: inherit; }
-  .voltar { background: none; border: 0; color: var(--ouro); padding: 8px 0; cursor: pointer; }
-  .visor {
-    margin: 16px 0; height: 130px; border-radius: 16px;
-    display: flex; align-items: center; justify-content: center;
-    font-family: Georgia, serif; font-size: 3.5rem;
-    background: var(--carvao); border: 3px solid var(--ouro);
-  }
-  .visor.vermelho { background: var(--vermelho); }
-  .visor.preto { background: #000; }
-  .visor.zero { background: var(--verde); }
-  .opcoes { display: flex; gap: 8px; margin-bottom: 12px; }
-  .opcoes button {
-    flex: 1; padding: 14px 4px; border-radius: 10px; cursor: pointer;
-    border: 2px solid transparent; color: #fff; font-weight: 600;
-  }
-  .opcoes button small { display: block; font-weight: 400; opacity: .85; }
-  .opcoes button.sel { border-color: var(--ouro); box-shadow: 0 0 0 2px var(--ouro); }
-  .b-vermelho { background: var(--vermelho); }
-  .b-preto { background: #000; }
-  .b-zero { background: var(--verde); }
-  .b-neutro { background: var(--carvao); }
-  label { display: block; margin: 12px 0 6px; color: #b9c7bd; font-size: .9rem; }
-  input[type=number] {
-    width: 100%; padding: 12px; font-size: 1.1rem; border-radius: 10px;
-    border: 1px solid var(--feltro-claro); background: #0a1a13; color: var(--marfim);
-  }
-  .fichas { display: flex; gap: 8px; margin-top: 8px; }
-  .fichas button {
-    flex: 1; padding: 10px 0; border-radius: 999px; cursor: pointer;
-    background: var(--feltro-claro); color: var(--marfim); border: 1px solid var(--ouro);
-  }
-  .acao {
-    width: 100%; margin-top: 16px; padding: 16px; border-radius: 12px; border: 0;
-    background: var(--ouro); color: #1b1b1b; font-weight: 700; font-size: 1.1rem; cursor: pointer;
-  }
-  .acao:disabled { opacity: .5; }
-  .msg { min-height: 1.5em; margin-top: 12px; text-align: center; font-weight: 600; }
-  .reset {
-    display: block; margin: 32px auto 8px; background: none; color: #b9c7bd;
-    border: 1px solid #b9c7bd; border-radius: 8px; padding: 8px 14px; cursor: pointer;
-  }
-  button:focus-visible, input:focus-visible { outline: 3px solid var(--ouro); outline-offset: 2px; }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+:root{--bg:#0c0d10;--p:#14161b;--p2:#1b1e25;--ln:#2a2e38;--ouro:#c9a24b;--m:#ece7da;--mut:#8d93a1;--v:#a82f36;--vd:#2f7d5b}
+*{box-sizing:border-box}[hidden]{display:none!important}
+body{margin:0;min-height:100vh;background:var(--bg);color:var(--m);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button{font:inherit;color:inherit;cursor:pointer}
+header{position:sticky;top:0;z-index:5;display:flex;justify-content:space-between;align-items:center;gap:8px;padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 12px;background:rgba(12,13,16,.95);border-bottom:1px solid var(--ln)}
+h1{font:600 1rem Georgia,serif;letter-spacing:.22em;color:var(--ouro);margin:0}
+h2{font:600 1.6rem Georgia,serif;margin:4px 0 10px}
+#placar{display:flex;gap:6px}
+.pill{border:1px solid var(--ln);border-radius:8px;padding:5px 10px;font-size:.8rem;color:var(--mut)}
+.pill b{color:var(--m);font-size:.95rem;margin-left:2px}
+.pill.on{border-color:var(--ouro)}.pill.on b{color:var(--ouro)}
+.aviso{font-size:.72rem;text-align:center;padding:8px 12px;color:var(--mut)}
+main{max-width:520px;margin:0 auto;padding:8px 16px 40px}
+.modo{display:flex;border:1px solid var(--ln);border-radius:8px;overflow:hidden}
+.modo button{flex:1;padding:12px;background:none;border:0;color:var(--mut)}
+.modo .sel{background:var(--p2);color:var(--ouro);font-weight:600}
+.dica,.tab{font-size:.78rem;color:var(--mut);text-align:center;margin:10px 0}
+.lista{display:flex;flex-direction:column;gap:8px}
+.item{display:flex;justify-content:space-between;align-items:center;text-align:left;padding:16px;background:var(--p);border:1px solid var(--ln);border-left:3px solid var(--ouro);border-radius:8px}
+.item b{display:block;font:600 1.15rem Georgia,serif}
+.item small{color:var(--mut)}.item em{font-style:normal;color:var(--ouro);font-size:1.4rem}
+.item.off{opacity:.4;border-left-color:var(--ln)}
+.voltar{background:none;border:0;color:var(--ouro);padding:8px 0}
+.visor{margin:12px 0;min-height:110px;border-radius:8px;display:flex;align-items:center;justify-content:center;font:600 3rem Georgia,serif;background:var(--p);border:1px solid var(--ouro)}
+.visor.peq{font-size:1.6rem}
+.visor.vermelho{background:var(--v)}.visor.preto{background:#000}.visor.zero{background:var(--vd)}
+.opc{display:flex;gap:8px;margin-bottom:8px}
+.op{flex:1;padding:12px 4px;border-radius:8px;border:1px solid var(--ln);background:var(--p);font-weight:600}
+.op small{display:block;font-weight:400;opacity:.8}
+.op.vermelho{background:var(--v)}.op.preto{background:#000}.op.zero{background:var(--vd)}
+.op.sel{border-color:var(--ouro);box-shadow:0 0 0 1px var(--ouro)}
+.bichos{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px}
+.bichos .op{padding:8px 2px;font-size:.85rem}
+.op i{display:block;font-style:normal;color:var(--ouro);font-size:.72rem}
+label{display:block;margin:14px 0 6px;color:var(--mut);font-size:.85rem}
+input{width:100%;padding:12px;font-size:1.1rem;border-radius:8px;border:1px solid var(--ln);background:var(--p);color:var(--m)}
+.fichas{display:flex;gap:8px;margin-top:8px}
+.fichas button{flex:1;padding:10px 0;border-radius:8px;background:none;border:1px solid var(--ln);color:var(--mut)}
+.acao{width:100%;margin-top:14px;padding:15px;border-radius:8px;border:0;background:var(--ouro);color:#14110a;font-weight:700;font-size:1.05rem}
+.acao:disabled{opacity:.45}
+.msg{min-height:1.6em;margin-top:12px;text-align:center;font-weight:600}
+.reset{display:block;margin:28px auto 0;background:none;border:1px solid var(--ln);color:var(--mut);border-radius:8px;padding:8px 14px}
+.mesa{background:#10231b;border:1px solid var(--ln);border-radius:12px;padding:12px;margin:8px 0}
+.lbl{color:var(--mut);font-size:.85rem}.lbl b{color:var(--ouro);margin-left:6px}
+.mao{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;min-height:96px;margin:8px 0 14px}
+.carta{position:relative;width:54px;height:80px;border-radius:6px;background:#f4efe3;color:#15161a;display:flex;flex-direction:column;align-items:center;justify-content:center;font:700 1.15rem Georgia,serif;box-shadow:0 2px 6px #0008;animation:pop .22s;transition:transform .15s}
+.carta span{font-size:1.4rem}.carta.r{color:#9e1f27}
+.verso{background:repeating-linear-gradient(45deg,#1d2a44 0 6px,#16203a 6px 12px);border:3px solid #f4efe3}
+.carta.seg{transform:translateY(-10px);box-shadow:0 0 0 2px var(--ouro)}
+.carta.seg::after{content:'MANTER';position:absolute;bottom:-18px;font:700 .55rem system-ui;color:var(--ouro)}
+.pc{background:none;border:0;padding:0}
+.acoes{display:flex;gap:8px;margin-top:12px}
+.acoes button{flex:1;padding:14px 0;border-radius:8px;border:1px solid var(--ouro);background:none;font-weight:600}
+.acoes button:disabled{opacity:.4}
+#ov{position:fixed;inset:0;z-index:20;background:var(--bg);display:flex;align-items:center;justify-content:center;text-align:center;padding:24px}
+#ov p{color:var(--mut);margin:0}
+.heroi{display:flex;align-items:center;gap:12px;margin:14px 0}
+.heroi svg{width:88px;height:88px;flex:none;shape-rendering:crispEdges;animation:bob 1.4s steps(1) infinite}
+.heroi p{position:relative;margin:0;padding:10px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--p);font-size:.85rem;color:var(--m)}
+.heroi p::before{content:'';position:absolute;left:-6px;top:50%;width:10px;height:10px;margin-top:-5px;background:var(--p);border-left:1px solid var(--ln);border-bottom:1px solid var(--ln);transform:rotate(45deg)}
+@keyframes bob{50%{transform:translateY(-3px)}}
+.topo{display:flex;justify-content:space-between;align-items:center}
+.topo svg{width:60px;height:60px;display:block;shape-rendering:crispEdges}
+#mc.win{animation:pulo .5s steps(2) 3}#mc.lose{animation:treme .4s steps(2) 3}
+@keyframes pulo{50%{transform:translateY(-10px)}}
+@keyframes treme{50%{transform:translateX(5px)}}
+.rv{display:flex;align-items:center;gap:10px;margin:6px 0}
+.rv svg{width:60px;height:60px;flex:none;shape-rendering:crispEdges}
+.rv p{margin:0;padding:8px 12px;border:1px solid var(--ln);border-radius:10px;background:var(--p);font-size:.85rem}
+.pt{text-align:center;font-size:.8rem;color:var(--mut);margin:8px 0}.pt b{color:var(--ouro)}
+.slot{width:54px;height:80px;border:1px dashed var(--ln);border-radius:6px}
+#tmesa .carta{animation:none}#tmesa .pc:disabled{cursor:default}
+@keyframes pop{from{transform:scale(.7);opacity:0}to{transform:scale(1);opacity:1}}
+button:focus-visible,input:focus-visible{outline:2px solid var(--ouro);outline-offset:2px}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-  <div class="aviso">Jogo fictício, só para diversão. Nenhum dinheiro real envolvido. Apenas para maiores de 18 anos.</div>
-
-  <main>
-    <div class="topo">
-      <h1>Mini Cassino</h1>
-      <div class="saldo"><small>Saldo (moedas)</small><strong id="saldo">1000</strong></div>
-    </div>
-
-    <!-- MENU -->
-    <section id="menu" class="tela ativa">
-      <button class="jogo" onclick="abrir('roleta')">
-        <h2>Roleta</h2><span>Vermelho e preto pagam 2x. Zero paga 14x.</span>
-      </button>
-      <button class="jogo" onclick="abrir('moeda')">
-        <h2>Cara ou coroa</h2><span>Acertou, paga 1,9x.</span>
-      </button>
-      <button class="reset" onclick="resetar()">Redefinir saldo</button>
-    </section>
-
-    <!-- ROLETA -->
-    <section id="roleta" class="tela">
-      <button class="voltar" onclick="abrir('menu')">‹ Início</button>
-      <div class="visor" id="visorRoleta">?</div>
-      <div class="opcoes">
-        <button class="b-vermelho" data-cor="vermelho" onclick="escolherCor('vermelho')">Vermelho<small>2x</small></button>
-        <button class="b-zero" data-cor="zero" onclick="escolherCor('zero')">Zero<small>14x</small></button>
-        <button class="b-preto" data-cor="preto" onclick="escolherCor('preto')">Preto<small>2x</small></button>
-      </div>
-      <label for="apostaRoleta">Valor da aposta</label>
-      <input type="number" id="apostaRoleta" min="1" value="50" inputmode="numeric">
-      <div class="fichas" data-alvo="apostaRoleta"></div>
-      <button class="acao" id="btnRoleta" onclick="girarRoleta()">Girar</button>
-      <div class="msg" id="msgRoleta">Escolha uma cor e gire.</div>
-    </section>
-
-    <!-- CARA OU COROA -->
-    <section id="moeda" class="tela">
-      <button class="voltar" onclick="abrir('menu')">‹ Início</button>
-      <div class="visor" id="visorMoeda">?</div>
-      <div class="opcoes">
-        <button class="b-neutro" data-lado="cara" onclick="escolherLado('cara')">Cara</button>
-        <button class="b-neutro" data-lado="coroa" onclick="escolherLado('coroa')">Coroa</button>
-      </div>
-      <label for="apostaMoeda">Valor da aposta</label>
-      <input type="number" id="apostaMoeda" min="1" value="50" inputmode="numeric">
-      <div class="fichas" data-alvo="apostaMoeda"></div>
-      <button class="acao" id="btnMoeda" onclick="jogarMoeda()">Lançar</button>
-      <div class="msg" id="msgMoeda">Escolha cara ou coroa.</div>
-    </section>
-  </main>
-
+<header><h1>BETBOY</h1><div id="placar"></div></header>
+<div class="aviso">Jogo fictício, só para diversão. Nenhum dinheiro real envolvido. Apenas para maiores de 18 anos.</div>
+<main><section id="home"></section><section id="jogo" hidden></section></main>
+<div id="ov" hidden></div>
 <script>
-  // ---------- Estado e saldo (salvo no navegador) ----------
-  const SALDO_INICIAL = 1000;
-  let saldo = SALDO_INICIAL;
-  let ocupado = false;
+const $=s=>document.querySelector(s),rnd=n=>Math.floor(Math.random()*n);
+let P=[{n:'Jogador 1',s:1000},{n:'Jogador 2',s:1000}],modo=1,cur=0,saldo=1000,busy=0,atual=null;
+try{const j=JSON.parse(localStorage.getItem('cassino2'));if(j&&j.P&&j.P.length===2){P=j.P;modo=j.modo===2?2:1;cur=modo===2&&j.cur===1?1:0}}catch(e){}
+saldo=P[cur].s;
+function salvar(){P[cur].s=saldo;try{localStorage.setItem('cassino2',JSON.stringify({P,modo,cur}))}catch(e){}placar()}
+function placar(){$('#placar').innerHTML=(modo===2?P:[P[0]]).map((p,i)=>`<span class="pill${modo===2&&i===cur?' on':''}">${modo===2?p.n.replace('Jogador ','J'):'Saldo'} <b>${p.s}</b></span>`).join('')}
+function passar(){const k=atual,n=1-cur;P[cur].s=saldo;$('#ov').innerHTML=`<div><p>Passe o celular para</p><h2>${P[n].n}</h2><button class="acao" id="ok">Estou pronto</button></div>`;$('#ov').hidden=false;
+$('#ok').onclick=()=>{cur=n;saldo=P[cur].s;salvar();$('#ov').hidden=true;busy=0;abrir(null);if(k)abrir(k)}}
+const msg=t=>{$('#msg').textContent=t;const mc=$('#mc');if(mc){const e=/perdeu|banca venceu|Sem jogo/i.test(t)?'lose':/ganhou|Você venceu|Acertou|Blackjack/i.test(t)?'win':'idle';mc.innerHTML=mascote(e);mc.className='';void mc.offsetWidth;mc.className=e}};
+const pagar=n=>{saldo+=n;salvar()};
+function pegar(){const v=Math.floor(+$('#bet').value);if(!(v>0))return msg('Digite um valor maior que zero.');if(v>saldo)return msg('Saldo insuficiente.');saldo-=v;salvar();return v}
+function fim(id){busy=0;const b=$('#'+id);if(b)b.disabled=false;if(saldo<1)msg($('#msg').textContent+' Acabaram as moedas: volte ao início e toque em Redefinir saldo.');if(modo===2)setTimeout(passar,2200)}
+const bet=()=>`<label for="bet">Valor da aposta</label><input id="bet" type="number" min="1" value="50" inputmode="numeric"><div class="fichas">${[10,50,100,'Tudo'].map(x=>`<button data-ch="${x}">${x}</button>`).join('')}</div>`;
+function sel(a,f){a.querySelectorAll('.op').forEach(b=>b.onclick=()=>{f(b.dataset.k);a.querySelectorAll('.op').forEach(x=>x.classList.toggle('sel',x===b))})}
 
-  try {
-    const salvo = localStorage.getItem("saldo");
-    if (salvo !== null && !isNaN(Number(salvo))) saldo = Number(salvo);
-  } catch (e) { /* sem storage: segue só em memória */ }
+const RK=['A','2','3','4','5','6','7','8','9','10','J','Q','K'],ST='♠♥♦♣';
+const baralho=()=>{const d=[];for(const s of ST)for(const r of RK)d.push({r,s});for(let i=51;i>0;i--){const j=rnd(i+1);[d[i],d[j]]=[d[j],d[i]]}return d};
+const carta=(c,x='')=>`<div class="carta ${'♥♦'.includes(c.s)?'r':''} ${x}">${c.r}<span>${c.s}&#xFE0E;</span></div>`;
+const verso='<div class="carta verso"></div>';
+const val=m=>{let t=0,a=0;m.forEach(c=>{const i=RK.indexOf(c.r)+1;t+=i>10?10:i===1?(a++,11):i});while(t>21&&a--)t-=10;return t};
 
-  function salvar() {
-    try { localStorage.setItem("saldo", String(saldo)); } catch (e) {}
-    document.getElementById("saldo").textContent = saldo;
-  }
+/* ---------- Mascote BetBoy (pixel art) ---------- */
+const BASE=[[5,1,6,1,'#a82f36'],[4,2,8,2,'#a82f36'],[3,4,10,1,'#c9a24b'],[4,5,8,5,'#e8b98a'],[3,6,1,2,'#e8b98a'],[12,6,1,2,'#e8b98a'],[4,6,3,2,'#0c0d10'],[9,6,3,2,'#0c0d10'],[7,6,2,1,'#0c0d10'],[5,6,1,1,'#5b6170'],[10,6,1,1,'#5b6170'],[7,10,2,1,'#e8b98a'],[3,11,10,4,'#1b1e25'],[6,11,4,4,'#ece7da'],[7,11,2,3,'#a82f36'],[3,11,1,4,'#c9a24b'],[13,11,3,3,'#c9a24b'],[14,12,1,1,'#14110a']];
+const BOCA='#7a2d2d',OURO='#c9a24b';
+const EXPR={
+ idle:[[6,9,4,1,BOCA],[5,8,1,1,BOCA],[10,8,1,1,BOCA]],
+ win:[[5,8,1,1,BOCA],[10,8,1,1,BOCA],[6,9,4,1,'#f4efe3'],[1,1,1,1,OURO],[14,0,1,1,'#a82f36'],[0,5,1,1,'#ece7da'],[15,5,1,1,OURO],[1,9,1,1,'#a82f36']],
+ lose:[[6,8,4,1,BOCA],[5,9,1,1,BOCA],[10,9,1,1,BOCA],[13,5,1,2,'#6ab0ff']]
+};
+const RIV={'#a82f36':'#2f5d9e','#c9a24b':'#9aa3b2','#e8b98a':'#d9a678','#1b1e25':'#2a2237','#ece7da':'#8d93a1'};
+function mascote(e='idle',r=0){return '<svg viewBox="0 0 16 16" role="img" aria-label="'+(r?'Rival':'BetBoy')+'">'+BASE.concat(EXPR[e],r?[[6,8,4,1,'#1a1410']]:[]).map(([x,y,w,k,c])=>`<rect x="${x}" y="${y}" width="${w}" height="${k}" fill="${r?RIV[c]||c:c}"/>`).join('')+'</svg>'}
 
-  function resetar() {
-    if (confirm("Voltar o saldo para 1000 moedas?")) { saldo = SALDO_INICIAL; salvar(); }
-  }
+/* ---------- Roleta ---------- */
+function roleta(a){let cor=null;
+a.innerHTML=`<div class="visor" id="v">?</div><div class="opc">${[['vermelho','Vermelho','2x'],['zero','Zero','14x'],['preto','Preto','2x']].map(([k,n,x])=>`<button class="op ${k}" data-k="${k}">${n}<small>${x}</small></button>`).join('')}</div>${bet()}<button class="acao" id="go">Girar</button>`;
+sel(a,k=>cor=k);
+const cn=n=>n?n<8?'vermelho':'preto':'zero';
+$('#go').onclick=()=>{if(busy)return;if(!cor)return msg('Escolha uma cor.');const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;msg('Girando...');
+const vis=$('#v'),t=setInterval(()=>{const n=rnd(15);vis.textContent=n;vis.className='visor '+cn(n)},90);
+setTimeout(()=>{clearInterval(t);const n=rnd(15),c=cn(n);vis.textContent=n;vis.className='visor '+c;
+if(c===cor){const g=v*(c==='zero'?14:2);pagar(g);msg('Você ganhou '+g+' moedas!')}else msg('Saiu '+c+'. Você perdeu '+v+'.');fim('go')},1800)}}
 
-  // ---------- Navegação ----------
-  function abrir(id) {
-    if (ocupado) return;
-    document.querySelectorAll(".tela").forEach(t => t.classList.remove("ativa"));
-    document.getElementById(id).classList.add("ativa");
-  }
+/* ---------- Cara ou coroa ---------- */
+function moeda(a){let l=null;
+a.innerHTML=`<div class="visor" id="v">?</div><div class="opc">${['Cara','Coroa'].map(x=>`<button class="op" data-k="${x}">${x}</button>`).join('')}</div>${bet()}<button class="acao" id="go">Lançar</button>`;
+sel(a,k=>l=k);
+$('#go').onclick=()=>{if(busy)return;if(!l)return msg('Escolha cara ou coroa.');const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;msg('Lançando...');
+const vis=$('#v'),t=setInterval(()=>vis.textContent=rnd(2)?'Cara':'Coroa',120);
+setTimeout(()=>{clearInterval(t);const r=rnd(2)?'Cara':'Coroa';vis.textContent=r;
+if(r===l){const g=Math.floor(v*1.9);pagar(g);msg('Acertou! Você ganhou '+g+' moedas.')}else msg('Deu '+r+'. Você perdeu '+v+'.');fim('go')},1200)}}
 
-  // ---------- Utilidades ----------
-  function lerAposta(idInput, idMsg) {
-    const v = Math.floor(Number(document.getElementById(idInput).value));
-    const msg = document.getElementById(idMsg);
-    if (!v || v < 1) { msg.textContent = "Digite um valor maior que zero."; return null; }
-    if (v > saldo) { msg.textContent = "Saldo insuficiente."; return null; }
-    return v;
-  }
+/* ---------- Blackjack ---------- */
+function blackjack(a){let d,p,h,v;
+a.innerHTML=`<div class="mesa"><div class="lbl">Banca <b id="hb"></b></div><div class="mao" id="hm"></div><div class="lbl">Você <b id="pb"></b></div><div class="mao" id="pm"></div></div><div id="bj">${bet()}<button class="acao" id="go">Distribuir</button></div><div class="acoes" id="ac" hidden><button id="pd">Pedir</button><button id="pr">Parar</button><button id="db">Dobrar</button></div>`;
+const mostra=r=>{$('#hm').innerHTML=h.map((c,i)=>i===1&&!r?verso:carta(c)).join('');$('#pm').innerHTML=p.map(c=>carta(c)).join('');$('#pb').textContent=val(p);$('#hb').textContent=r?val(h):'';$('#db').disabled=p.length>2};
+const acaba=k=>{mostra(1);$('#ac').hidden=true;$('#bj').hidden=false;const m={bj:[2.5,'Blackjack! Paga 3 para 2.'],win:[2,'Você venceu!'],push:[1,'Empate: aposta devolvida.'],lose:[0,'A banca venceu.']}[k],g=Math.floor(v*m[0]);if(g)pagar(g);msg(m[1]+(g>v?' +'+(g-v):g?'':' -'+v));fim('go')};
+const parar=()=>{while(val(h)<17)h.push(d.pop());const x=val(p),y=val(h);acaba(y>21||x>y?'win':x===y?'push':'lose')};
+$('#go').onclick=()=>{if(busy)return;v=pegar();if(!v)return;busy=1;d=baralho();p=[d.pop(),d.pop()];h=[d.pop(),d.pop()];$('#bj').hidden=true;msg('');mostra(0);if(val(p)===21)acaba(val(h)===21?'push':'bj');else $('#ac').hidden=false};
+$('#pd').onclick=()=>{p.push(d.pop());mostra(0);if(val(p)>21)acaba('lose');else if(val(p)===21)parar()};
+$('#pr').onclick=parar;
+$('#db').onclick=()=>{if(saldo<v)return msg('Saldo insuficiente para dobrar.');saldo-=v;v*=2;salvar();p.push(d.pop());if(val(p)>21){mostra(0);acaba('lose')}else parar()}}
 
-  document.querySelectorAll(".fichas").forEach(box => {
-    const alvo = box.dataset.alvo;
-    [["10", 10], ["50", 50], ["100", 100], ["Tudo", -1]].forEach(([txt, val]) => {
-      const b = document.createElement("button");
-      b.textContent = txt;
-      b.onclick = () => { document.getElementById(alvo).value = val === -1 ? saldo : val; };
-      box.appendChild(b);
-    });
-  });
+/* ---------- Vídeo poker (par de valetes ou melhor) ---------- */
+function avaliar(m){const n=m.map(c=>RK.indexOf(c.r)+1).sort((x,y)=>x-y),fl=m.every(c=>c.s===m[0].s),cnt={};
+n.forEach(x=>cnt[x]=(cnt[x]||0)+1);const q=Object.values(cnt).sort((x,y)=>y-x),roy=n.join()==='1,10,11,12,13',seq=new Set(n).size===5&&(n[4]-n[0]===4||roy);
+if(seq&&fl)return roy?['Royal flush',250]:['Straight flush',50];
+if(q[0]===4)return['Quadra',25];if(q[0]===3&&q[1]===2)return['Full house',9];if(fl)return['Flush',6];if(seq)return['Sequência',4];if(q[0]===3)return['Trinca',3];if(q[0]===2&&q[1]===2)return['Dois pares',2];
+if(q[0]===2){const p=+Object.keys(cnt).find(k=>cnt[k]===2);if(p===1||p>=11)return['Par de valetes ou melhor',1]}return['Nada',0]}
+function poker(a){let d,m,s,v,f=0;
+a.innerHTML=`<div class="mao" id="pk"></div><div class="dica">Dê as cartas, toque nas que quer manter e troque as outras.</div><div class="tab">Par de valetes+ 1x · 2 pares 2x · Trinca 3x · Sequência 4x · Flush 6x · Full house 9x · Quadra 25x · Straight flush 50x · Royal 250x</div>${bet()}<button class="acao" id="go">Dar cartas</button>`;
+const mostra=()=>{$('#pk').innerHTML=m.map((c,i)=>`<button class="pc" data-h="${i}">${carta(c,s[i]?'seg':'')}</button>`).join('')};
+$('#pk').onclick=e=>{const b=e.target.closest('[data-h]');if(b&&f===1){s[b.dataset.h]^=1;mostra()}};
+$('#go').onclick=()=>{if(!f){v=pegar();if(!v)return;busy=1;d=baralho();m=[0,1,2,3,4].map(()=>d.pop());s=[0,0,0,0,0];f=1;mostra();$('#go').textContent='Trocar cartas';msg('Escolha quais cartas manter.')}
+else{m=m.map((c,i)=>s[i]?c:d.pop());mostra();s=[0,0,0,0,0];const[n,x]=avaliar(m);f=0;$('#go').textContent='Dar cartas';
+if(x){pagar(v*x);msg(n+'! '+(x>1?'Você ganhou '+v*(x-1)+' moedas.':'Aposta devolvida.'))}else msg('Sem jogo. Você perdeu '+v+'.');fim('go')}}}
 
-  function marcar(seletor, atributo, valor) {
-    document.querySelectorAll(seletor).forEach(b => b.classList.toggle("sel", b.dataset[atributo] === valor));
-  }
+/* ---------- Jogo do bicho (25 grupos) ---------- */
+const BI=['Avestruz','Águia','Burro','Borboleta','Cachorro','Cabra','Carneiro','Camelo','Cobra','Coelho','Cavalo','Elefante','Galo','Gato','Jacaré','Leão','Macaco','Porco','Pavão','Peru','Touro','Tigre','Urso','Veado','Vaca'];
+const num=i=>String(i+1).padStart(2,'0');
+function bicho(a){let e=null;
+a.innerHTML=`<div class="visor peq" id="v">Escolha um grupo</div><div class="bichos">${BI.map((b,i)=>`<button class="op" data-k="${i}"><i>${num(i)}</i>${b}</button>`).join('')}</div>${bet()}<button class="acao" id="go">Sortear</button>`;
+sel(a,k=>e=+k);
+$('#go').onclick=()=>{if(busy)return;if(e===null)return msg('Escolha um grupo. Se ele sair, paga 18x.');const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;msg('Sorteando...');
+const vis=$('#v'),t=setInterval(()=>{const i=rnd(25);vis.textContent=num(i)+' '+BI[i]},90);
+setTimeout(()=>{clearInterval(t);const r=rnd(25);vis.textContent=num(r)+' '+BI[r];
+if(r===e){pagar(v*18);msg('Deu '+BI[r]+'! Você ganhou '+v*18+' moedas.')}else msg('Deu '+BI[r]+'. Você perdeu '+v+'.');fim('go')},1600)}}
 
-  // ---------- Roleta: 15 casas (1 zero, 7 vermelhos, 7 pretos) ----------
-  let corEscolhida = null;
+/* ---------- Truco mineiro contra o Rival ---------- */
+const MAN=['4♣','7♥','A♠','7♦'],ORD=['4','5','6','7','Q','J','K','A','2','3'];
+const forca=c=>{const i=MAN.indexOf(c.r+c.s);return i>=0?100-i:ORD.indexOf(c.r)};
+const esp=ms=>new Promise(r=>setTimeout(r,ms));
+const dec=(r,m)=>{const y=r.filter(x=>x==='y').length,v=r.filter(x=>x==='r').length;
+if(y>1)return'y';if(v>1)return'r';if(r.length===2&&y+v===1)return y?'y':'r';
+if(r.length===3){if(y!==v)return y>v?'y':'r';return r.find(x=>x!=='t')||m}return null};
+function truco(a){let Y,R,pts,S,esperar=null;
+const escolher=()=>new Promise(r=>esperar=r),prox=s=>s===1?3:s+3,nomes={3:'Truco',6:'Seis',9:'Nove',12:'Doze'};
+const forte=()=>R.some(c=>forca(c)>=98)||R.filter(c=>forca(c)>=8).length>1;
+function draw(){const m=S.modo,tr=S.stake<12&&S.last!=='y';
+const bt=m==='jogar'?`<button data-t="truco" ${tr?'':'disabled'}>${nomes[prox(S.stake)]||'Doze'}!</button><button data-t="corre">Correr</button>`:m==='resp'?'<button data-t="aceita">Aceitar</button><button data-t="corre">Correr</button>':'';
+$('#tmesa').innerHTML=`<div class="rv">${mascote(S.re,1)}<p>${S.fala}</p></div><div class="pt">Você <b>${pts[0]}</b> x <b>${pts[1]}</b> Rival · mão vale <b>${S.stake}</b> · ${S.res.map(w=>w==='y'?'V':w==='r'?'D':'E').join(' ')||'—'}</div><div class="mao">${R.map(()=>verso).join('')}</div><div class="mao">${S.mR?carta(S.mR):'<div class="slot"></div>'}${S.mY?carta(S.mY):'<div class="slot"></div>'}</div><div class="mao">${Y.map((c,i)=>`<button class="pc" data-c="${i}" ${m==='jogar'?'':'disabled'}>${carta(c)}</button>`).join('')}</div><div class="acoes">${bt}</div>`}
+const say=(t,e='idle')=>{S.fala=t;S.re=e;draw()};
+async function vezJ(){while(1){S.modo='jogar';draw();const x=await escolher();S.modo='espera';
+if(x.t==='c'){S.mY=Y.splice(x.i,1)[0];draw();return}
+if(x.t==='corre')return{w:'r',p:S.stake};
+const n=prox(S.stake);say('Você pediu '+nomes[n]+'!');await esp(900);
+if(!(forte()?rnd(100)<85:rnd(100)<25)){say('Corri. Fica com a mão.','lose');await esp(900);return{w:'y',p:S.stake}}
+S.stake=n;S.last='y';say('Quero ver. Vale '+n+'.')}}
+async function vezR(){if(S.last!=='r'&&S.stake<12&&forte()&&rnd(100)<28){const n=prox(S.stake);say(nomes[n].toUpperCase()+'! Vale '+n+'.','win');S.modo='resp';draw();const x=await escolher();S.modo='espera';
+if(x.t==='corre')return{w:'r',p:S.stake};S.stake=n;S.last='r';say('Boa. Vamos ver.')}
+const o=[...R].sort((p,q)=>forca(p)-forca(q));
+S.mR=S.mY?(o.find(c=>forca(c)>forca(S.mY))||o[0]):o[S.res.length&&o.length>1?o.length-1:o.length>>1];
+R.splice(R.indexOf(S.mR),1);draw();await esp(800)}
+async function jogaMao(){const d=baralho().filter(c=>!['8','9','10'].includes(c.r));
+Y=[d.pop(),d.pop(),d.pop()];R=[d.pop(),d.pop(),d.pop()];S.stake=1;S.last=null;S.res=[];S.mY=S.mR=null;let lead=S.mao;
+say(lead==='y'?'Você é mão. Joga.':'Eu sou mão.');await esp(600);
+for(let t=0;t<3;t++){S.mY=S.mR=null;
+for(const q of lead==='y'?['y','r']:['r','y']){const r=await(q==='y'?vezJ():vezR());if(r)return r}
+const fy=forca(S.mY),fr=forca(S.mR),w=fy>fr?'y':fr>fy?'r':'t';S.res.push(w);
+say(w==='y'?'Você fez a vaza.':w==='r'?'Fiz a vaza.':'Empatou.',w==='r'?'win':w==='y'?'lose':'idle');await esp(1300);
+const f=dec(S.res,S.mao);if(f)return{w:f,p:S.stake};if(w!=='t')lead=w}}
+async function partida(v){pts=[0,0];S={mao:rnd(2)?'y':'r',stake:1,res:[],fala:'Bora?',re:'idle',modo:'espera'};Y=[];R=[];msg('');
+while(pts[0]<12&&pts[1]<12){const r=await jogaMao();pts[r.w==='y'?0:1]+=r.p;
+if(r.w==='y')say('Você fez a mão: +'+r.p,'lose');else say('A mão é minha: +'+r.p,'win');await esp(1700);S.mao=S.mao==='y'?'r':'y'}
+Y=[];R=[];S.stake=1;S.res=[];S.mY=S.mR=null;
+if(pts[0]>=12){const g=Math.floor(v*1.9);pagar(g);say('Você levou. Boa.','lose');msg('Você ganhou a partida! +'+(g-v)+' moedas.')}
+else{say('Ganhei! Tenta de novo.','win');msg('O Rival venceu a partida. -'+v+' moedas.')}}
+a.innerHTML=`<div id="tmesa"></div><div id="tbet">${bet()}<button class="acao" id="go">Começar partida (até 12)</button><p class="dica">Truco mineiro: as manilhas são fixas (4 de paus, 7 de copas, ás de espadas e 7 de ouros). Quem chega a 12 pontos vence e a vitória paga 1,9x.</p></div>`;
+$('#tmesa').onclick=e=>{const b=e.target.closest('[data-c],[data-t]');if(!b||!esperar||b.disabled)return;const f=esperar;esperar=null;f(b.dataset.t?{t:b.dataset.t}:{t:'c',i:+b.dataset.c})};
+$('#go').onclick=async()=>{if(busy)return;const v=pegar();if(!v)return;busy=1;$('#tbet').hidden=true;await partida(v);$('#tbet').hidden=false;fim('go')}}
 
-  function escolherCor(c) { corEscolhida = c; marcar("[data-cor]", "cor", c); }
-
-  function corDoNumero(n) { return n === 0 ? "zero" : n <= 7 ? "vermelho" : "preto"; }
-
-  function girarRoleta() {
-    if (ocupado) return;
-    const msg = document.getElementById("msgRoleta");
-    if (!corEscolhida) { msg.textContent = "Escolha uma cor primeiro."; return; }
-    const valor = lerAposta("apostaRoleta", "msgRoleta");
-    if (!valor) return;
-
-    ocupado = true;
-    saldo -= valor; salvar();
-    document.getElementById("btnRoleta").disabled = true;
-    msg.textContent = "Girando...";
-    const visor = document.getElementById("visorRoleta");
-
-    const anim = setInterval(() => {
-      const n = Math.floor(Math.random() * 15);
-      visor.textContent = n;
-      visor.className = "visor " + corDoNumero(n);
-    }, 90);
-
-    setTimeout(() => {
-      clearInterval(anim);
-      const n = Math.floor(Math.random() * 15);
-      const cor = corDoNumero(n);
-      visor.textContent = n;
-      visor.className = "visor " + cor;
-
-      if (cor === corEscolhida) {
-        const ganho = valor * (cor === "zero" ? 14 : 2);
-        saldo += ganho;
-        msg.textContent = "Você ganhou " + ganho + " moedas!";
-      } else {
-        msg.textContent = "Saiu " + cor + ". Você perdeu " + valor + ".";
-      }
-      salvar();
-      fimDaRodada("btnRoleta", msg);
-    }, 1800);
-  }
-
-  // ---------- Cara ou coroa ----------
-  let ladoEscolhido = null;
-
-  function escolherLado(l) { ladoEscolhido = l; marcar("[data-lado]", "lado", l); }
-
-  function jogarMoeda() {
-    if (ocupado) return;
-    const msg = document.getElementById("msgMoeda");
-    if (!ladoEscolhido) { msg.textContent = "Escolha cara ou coroa primeiro."; return; }
-    const valor = lerAposta("apostaMoeda", "msgMoeda");
-    if (!valor) return;
-
-    ocupado = true;
-    saldo -= valor; salvar();
-    document.getElementById("btnMoeda").disabled = true;
-    msg.textContent = "Lançando...";
-    const visor = document.getElementById("visorMoeda");
-
-    const anim = setInterval(() => {
-      visor.textContent = Math.random() < 0.5 ? "Cara" : "Coroa";
-    }, 120);
-
-    setTimeout(() => {
-      clearInterval(anim);
-      const lado = Math.random() < 0.5 ? "cara" : "coroa";
-      visor.textContent = lado === "cara" ? "Cara" : "Coroa";
-
-      if (lado === ladoEscolhido) {
-        const ganho = Math.floor(valor * 1.9);
-        saldo += ganho;
-        msg.textContent = "Acertou! Você ganhou " + ganho + " moedas.";
-      } else {
-        msg.textContent = "Deu " + lado + ". Você perdeu " + valor + ".";
-      }
-      salvar();
-      fimDaRodada("btnMoeda", msg);
-    }, 1200);
-  }
-
-  // ---------- Fim de rodada ----------
-  function fimDaRodada(idBotao, msg) {
-    ocupado = false;
-    document.getElementById(idBotao).disabled = false;
-    if (saldo < 1) msg.textContent += " Acabaram as moedas: volte ao início e toque em Redefinir saldo.";
-  }
-
-  salvar();
+/* ---------- Menu e navegação ---------- */
+const JOGOS={roleta:['Roleta','Vermelho ou preto paga 2x',roleta],blackjack:['Blackjack','Paga 3 para 2',blackjack],poker:['Poker','Vídeo poker, até 250x',poker],truco:['Truco','Contra o Rival, até 12 pontos',truco],bicho:['Jogo do bicho','Acertou o grupo, paga 18x',bicho],moeda:['Cara ou coroa','Acertou, paga 1,9x',moeda]};
+function home(){$('#home').innerHTML=`<div class="modo"><button data-m="1" class="${modo===1?'sel':''}">1 jogador</button><button data-m="2" class="${modo===2?'sel':''}">2 jogadores</button></div><div class="heroi">${mascote('idle')}<p>${modo===2?'Cada um tem o seu saldo. Passe o celular depois de cada rodada.':'Fala, eu sou o BetBoy. Escolha uma mesa e boa sorte.'}</p></div><div class="lista">${Object.entries(JOGOS).map(([k,j])=>`<button class="item" data-j="${k}"><span><b>${j[0]}</b><small>${j[1]}</small></span><em>›</em></button>`).join('')}</div><button class="reset" id="rs">Redefinir saldo</button>`;
+$('#rs').onclick=()=>{if(confirm('Voltar os saldos para 1000 moedas?')){P.forEach(p=>p.s=1000);saldo=P[cur].s;salvar()}}}
+function abrir(k){if(busy)return;atual=k;$('#home').hidden=!!k;$('#jogo').hidden=!k;if(!k){home();return}const j=JOGOS[k];
+$('#jogo').innerHTML=`<button class="voltar" id="vt">‹ Início</button><div class="topo"><h2>${j[0]}</h2><div id="mc">${mascote('idle')}</div></div><div id="area"></div><div class="msg" id="msg"></div>`;
+$('#vt').onclick=()=>abrir(null);j[2]($('#area'))}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-j]');if(t)abrir(t.dataset.j);
+const c=e.target.closest('[data-ch]');if(c&&$('#bet'))$('#bet').value=c.dataset.ch==='Tudo'?saldo:c.dataset.ch;
+const m=e.target.closest('[data-m]');if(m&&!busy){P[cur].s=saldo;modo=+m.dataset.m;if(modo===1)cur=0;saldo=P[cur].s;salvar();home()}});
+salvar();abrir(null);
 </script>
 </body>
 </html>
