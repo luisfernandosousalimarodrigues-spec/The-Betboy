@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mini Cassino Fictício</title>
+<style>
+  :root {
+    --feltro: #0f2a1f;
+    --feltro-claro: #17402f;
+    --ouro: #f2c14e;
+    --marfim: #f6f1e3;
+    --vermelho: #d64545;
+    --carvao: #22262e;
+    --verde: #3fb77a;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: var(--feltro);
+    color: var(--marfim);
+    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    padding: env(safe-area-inset-top, 0) 0 env(safe-area-inset-bottom, 0);
+  }
+  main { max-width: 480px; margin: 0 auto; padding: 16px; }
+  h1, h2 { font-family: Georgia, "Times New Roman", serif; margin: 0; }
+  h1 { font-size: 2rem; color: var(--ouro); }
+  .aviso {
+    font-size: .8rem; text-align: center; padding: 8px 12px;
+    background: #0a1a13; border-bottom: 1px solid var(--feltro-claro);
+  }
+  .topo { display: flex; justify-content: space-between; align-items: center; margin: 16px 0; }
+  .saldo { text-align: right; }
+  .saldo small { display: block; color: #b9c7bd; font-size: .75rem; }
+  .saldo strong { font-size: 1.6rem; color: var(--ouro); }
+  .tela { display: none; }
+  .tela.ativa { display: block; }
+  .jogo {
+    display: block; width: 100%; text-align: left; margin-bottom: 12px;
+    padding: 18px; border-radius: 14px; border: 1px solid var(--ouro);
+    background: var(--feltro-claro); color: var(--marfim); cursor: pointer;
+  }
+  .jogo h2 { font-size: 1.3rem; }
+  .jogo span { color: #b9c7bd; font-size: .9rem; }
+  button { font: inherit; }
+  .voltar { background: none; border: 0; color: var(--ouro); padding: 8px 0; cursor: pointer; }
+  .visor {
+    margin: 16px 0; height: 130px; border-radius: 16px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: Georgia, serif; font-size: 3.5rem;
+    background: var(--carvao); border: 3px solid var(--ouro);
+  }
+  .visor.vermelho { background: var(--vermelho); }
+  .visor.preto { background: #000; }
+  .visor.zero { background: var(--verde); }
+  .opcoes { display: flex; gap: 8px; margin-bottom: 12px; }
+  .opcoes button {
+    flex: 1; padding: 14px 4px; border-radius: 10px; cursor: pointer;
+    border: 2px solid transparent; color: #fff; font-weight: 600;
+  }
+  .opcoes button small { display: block; font-weight: 400; opacity: .85; }
+  .opcoes button.sel { border-color: var(--ouro); box-shadow: 0 0 0 2px var(--ouro); }
+  .b-vermelho { background: var(--vermelho); }
+  .b-preto { background: #000; }
+  .b-zero { background: var(--verde); }
+  .b-neutro { background: var(--carvao); }
+  label { display: block; margin: 12px 0 6px; color: #b9c7bd; font-size: .9rem; }
+  input[type=number] {
+    width: 100%; padding: 12px; font-size: 1.1rem; border-radius: 10px;
+    border: 1px solid var(--feltro-claro); background: #0a1a13; color: var(--marfim);
+  }
+  .fichas { display: flex; gap: 8px; margin-top: 8px; }
+  .fichas button {
+    flex: 1; padding: 10px 0; border-radius: 999px; cursor: pointer;
+    background: var(--feltro-claro); color: var(--marfim); border: 1px solid var(--ouro);
+  }
+  .acao {
+    width: 100%; margin-top: 16px; padding: 16px; border-radius: 12px; border: 0;
+    background: var(--ouro); color: #1b1b1b; font-weight: 700; font-size: 1.1rem; cursor: pointer;
+  }
+  .acao:disabled { opacity: .5; }
+  .msg { min-height: 1.5em; margin-top: 12px; text-align: center; font-weight: 600; }
+  .reset {
+    display: block; margin: 32px auto 8px; background: none; color: #b9c7bd;
+    border: 1px solid #b9c7bd; border-radius: 8px; padding: 8px 14px; cursor: pointer;
+  }
+  button:focus-visible, input:focus-visible { outline: 3px solid var(--ouro); outline-offset: 2px; }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+  <div class="aviso">Jogo fictício, só para diversão. Nenhum dinheiro real envolvido. Apenas para maiores de 18 anos.</div>
+
+  <main>
+    <div class="topo">
+      <h1>Mini Cassino</h1>
+      <div class="saldo"><small>Saldo (moedas)</small><strong id="saldo">1000</strong></div>
+    </div>
+
+    <!-- MENU -->
+    <section id="menu" class="tela ativa">
+      <button class="jogo" onclick="abrir('roleta')">
+        <h2>Roleta</h2><span>Vermelho e preto pagam 2x. Zero paga 14x.</span>
+      </button>
+      <button class="jogo" onclick="abrir('moeda')">
+        <h2>Cara ou coroa</h2><span>Acertou, paga 1,9x.</span>
+      </button>
+      <button class="reset" onclick="resetar()">Redefinir saldo</button>
+    </section>
+
+    <!-- ROLETA -->
+    <section id="roleta" class="tela">
+      <button class="voltar" onclick="abrir('menu')">‹ Início</button>
+      <div class="visor" id="visorRoleta">?</div>
+      <div class="opcoes">
+        <button class="b-vermelho" data-cor="vermelho" onclick="escolherCor('vermelho')">Vermelho<small>2x</small></button>
+        <button class="b-zero" data-cor="zero" onclick="escolherCor('zero')">Zero<small>14x</small></button>
+        <button class="b-preto" data-cor="preto" onclick="escolherCor('preto')">Preto<small>2x</small></button>
+      </div>
+      <label for="apostaRoleta">Valor da aposta</label>
+      <input type="number" id="apostaRoleta" min="1" value="50" inputmode="numeric">
+      <div class="fichas" data-alvo="apostaRoleta"></div>
+      <button class="acao" id="btnRoleta" onclick="girarRoleta()">Girar</button>
+      <div class="msg" id="msgRoleta">Escolha uma cor e gire.</div>
+    </section>
+
+    <!-- CARA OU COROA -->
+    <section id="moeda" class="tela">
+      <button class="voltar" onclick="abrir('menu')">‹ Início</button>
+      <div class="visor" id="visorMoeda">?</div>
+      <div class="opcoes">
+        <button class="b-neutro" data-lado="cara" onclick="escolherLado('cara')">Cara</button>
+        <button class="b-neutro" data-lado="coroa" onclick="escolherLado('coroa')">Coroa</button>
+      </div>
+      <label for="apostaMoeda">Valor da aposta</label>
+      <input type="number" id="apostaMoeda" min="1" value="50" inputmode="numeric">
+      <div class="fichas" data-alvo="apostaMoeda"></div>
+      <button class="acao" id="btnMoeda" onclick="jogarMoeda()">Lançar</button>
+      <div class="msg" id="msgMoeda">Escolha cara ou coroa.</div>
+    </section>
+  </main>
+
+<script>
+  // ---------- Estado e saldo (salvo no navegador) ----------
+  const SALDO_INICIAL = 1000;
+  let saldo = SALDO_INICIAL;
+  let ocupado = false;
+
+  try {
+    const salvo = localStorage.getItem("saldo");
+    if (salvo !== null && !isNaN(Number(salvo))) saldo = Number(salvo);
+  } catch (e) { /* sem storage: segue só em memória */ }
+
+  function salvar() {
+    try { localStorage.setItem("saldo", String(saldo)); } catch (e) {}
+    document.getElementById("saldo").textContent = saldo;
+  }
+
+  function resetar() {
+    if (confirm("Voltar o saldo para 1000 moedas?")) { saldo = SALDO_INICIAL; salvar(); }
+  }
+
+  // ---------- Navegação ----------
+  function abrir(id) {
+    if (ocupado) return;
+    document.querySelectorAll(".tela").forEach(t => t.classList.remove("ativa"));
+    document.getElementById(id).classList.add("ativa");
+  }
+
+  // ---------- Utilidades ----------
+  function lerAposta(idInput, idMsg) {
+    const v = Math.floor(Number(document.getElementById(idInput).value));
+    const msg = document.getElementById(idMsg);
+    if (!v || v < 1) { msg.textContent = "Digite um valor maior que zero."; return null; }
+    if (v > saldo) { msg.textContent = "Saldo insuficiente."; return null; }
+    return v;
+  }
+
+  document.querySelectorAll(".fichas").forEach(box => {
+    const alvo = box.dataset.alvo;
+    [["10", 10], ["50", 50], ["100", 100], ["Tudo", -1]].forEach(([txt, val]) => {
+      const b = document.createElement("button");
+      b.textContent = txt;
+      b.onclick = () => { document.getElementById(alvo).value = val === -1 ? saldo : val; };
+      box.appendChild(b);
+    });
+  });
+
+  function marcar(seletor, atributo, valor) {
+    document.querySelectorAll(seletor).forEach(b => b.classList.toggle("sel", b.dataset[atributo] === valor));
+  }
+
+  // ---------- Roleta: 15 casas (1 zero, 7 vermelhos, 7 pretos) ----------
+  let corEscolhida = null;
+
+  function escolherCor(c) { corEscolhida = c; marcar("[data-cor]", "cor", c); }
+
+  function corDoNumero(n) { return n === 0 ? "zero" : n <= 7 ? "vermelho" : "preto"; }
+
+  function girarRoleta() {
+    if (ocupado) return;
+    const msg = document.getElementById("msgRoleta");
+    if (!corEscolhida) { msg.textContent = "Escolha uma cor primeiro."; return; }
+    const valor = lerAposta("apostaRoleta", "msgRoleta");
+    if (!valor) return;
+
+    ocupado = true;
+    saldo -= valor; salvar();
+    document.getElementById("btnRoleta").disabled = true;
+    msg.textContent = "Girando...";
+    const visor = document.getElementById("visorRoleta");
+
+    const anim = setInterval(() => {
+      const n = Math.floor(Math.random() * 15);
+      visor.textContent = n;
+      visor.className = "visor " + corDoNumero(n);
+    }, 90);
+
+    setTimeout(() => {
+      clearInterval(anim);
+      const n = Math.floor(Math.random() * 15);
+      const cor = corDoNumero(n);
+      visor.textContent = n;
+      visor.className = "visor " + cor;
+
+      if (cor === corEscolhida) {
+        const ganho = valor * (cor === "zero" ? 14 : 2);
+        saldo += ganho;
+        msg.textContent = "Você ganhou " + ganho + " moedas!";
+      } else {
+        msg.textContent = "Saiu " + cor + ". Você perdeu " + valor + ".";
+      }
+      salvar();
+      fimDaRodada("btnRoleta", msg);
+    }, 1800);
+  }
+
+  // ---------- Cara ou coroa ----------
+  let ladoEscolhido = null;
+
+  function escolherLado(l) { ladoEscolhido = l; marcar("[data-lado]", "lado", l); }
+
+  function jogarMoeda() {
+    if (ocupado) return;
+    const msg = document.getElementById("msgMoeda");
+    if (!ladoEscolhido) { msg.textContent = "Escolha cara ou coroa primeiro."; return; }
+    const valor = lerAposta("apostaMoeda", "msgMoeda");
+    if (!valor) return;
+
+    ocupado = true;
+    saldo -= valor; salvar();
+    document.getElementById("btnMoeda").disabled = true;
+    msg.textContent = "Lançando...";
+    const visor = document.getElementById("visorMoeda");
+
+    const anim = setInterval(() => {
+      visor.textContent = Math.random() < 0.5 ? "Cara" : "Coroa";
+    }, 120);
+
+    setTimeout(() => {
+      clearInterval(anim);
+      const lado = Math.random() < 0.5 ? "cara" : "coroa";
+      visor.textContent = lado === "cara" ? "Cara" : "Coroa";
+
+      if (lado === ladoEscolhido) {
+        const ganho = Math.floor(valor * 1.9);
+        saldo += ganho;
+        msg.textContent = "Acertou! Você ganhou " + ganho + " moedas.";
+      } else {
+        msg.textContent = "Deu " + lado + ". Você perdeu " + valor + ".";
+      }
+      salvar();
+      fimDaRodada("btnMoeda", msg);
+    }, 1200);
+  }
+
+  // ---------- Fim de rodada ----------
+  function fimDaRodada(idBotao, msg) {
+    ocupado = false;
+    document.getElementById(idBotao).disabled = false;
+    if (saldo < 1) msg.textContent += " Acabaram as moedas: volte ao início e toque em Redefinir saldo.";
+  }
+
+  salvar();
+</script>
+</body>
+</html>
