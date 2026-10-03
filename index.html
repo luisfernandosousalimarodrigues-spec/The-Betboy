@@ -144,29 +144,106 @@ input:focus{border-color:var(--ouro);box-shadow:0 0 0 3px #c9a24b33;outline:0}
 .fxm{position:fixed;top:-40px;font-size:1.7rem;pointer-events:none;z-index:30;animation:cai 1.9s ease-in forwards}
 @keyframes cai{to{transform:translateY(112vh) rotate(540deg)}}
 @media(min-width:900px){#jogo{padding:28px 36px;margin-top:0}#home{padding-right:4px}}
+
+/* ===== Estilo adulto: ícones vetoriais e cores por jogo ===== */
+.sv{width:1em;height:1em;display:block}
+.item{border-left-color:var(--c,var(--ouro))}
+.item .ic{color:var(--c);border-color:color-mix(in srgb,var(--c) 45%,#2a2e38);background:radial-gradient(circle at 30% 20%,color-mix(in srgb,var(--c) 24%,#1b1e25),#121317)}
+.item .ic .sv{width:26px;height:26px}
+.item u{color:var(--c);border-color:color-mix(in srgb,var(--c) 45%,#14161b)}
+.item:hover{border-color:var(--c)}
+h2 .ic{display:inline-grid;place-items:center;width:34px;height:34px;vertical-align:middle;border-radius:9px;color:var(--c);background:color-mix(in srgb,var(--c) 16%,#14161b);border:1px solid color-mix(in srgb,var(--c) 50%,#14161b)}
+h2 .ic .sv{width:20px;height:20px}
+#jogo{border-top:3px solid var(--c,var(--ouro))}
+.visor{border-color:var(--c,var(--ouro));box-shadow:inset 0 0 40px #000c,0 0 0 4px #14110a,0 0 0 5px var(--c,#c9a24b),0 10px 30px #0009}
+#jogo .acao{color:#0e0f12;background:linear-gradient(180deg,color-mix(in srgb,var(--c,#c9a24b) 70%,#fff),var(--c,#c9a24b) 55%,color-mix(in srgb,var(--c,#c9a24b) 70%,#000));box-shadow:0 4px 0 color-mix(in srgb,var(--c,#c9a24b) 45%,#000),0 12px 26px color-mix(in srgb,var(--c,#c9a24b) 25%,transparent)}
+.stats div:nth-child(1) b{color:#4f8fd6}.stats div:nth-child(2) b{color:#3fae80}.stats div:nth-child(3) b{color:#e0963a}
+.die{width:64px;height:64px;margin:0 8px;filter:drop-shadow(0 4px 6px #000a)}
+.rl{width:82px;height:100px;display:grid;place-items:center;margin:0 6px;border-radius:10px;font:700 3.2rem Georgia,serif;background:linear-gradient(180deg,#0d0e11,#23262e 50%,#0d0e11);border:1px solid #3a3f4c;box-shadow:inset 0 0 18px #000}
+.minas .op .sv{width:24px;height:24px;margin:auto}.op .gm{color:#4fd1e0}.op .bm{color:#ef6b73}
+.fxm.cn{width:18px;height:18px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#f6dc92,#c9a24b 60%,#7a5a1e)}
+.fxm.df{width:12px;height:12px;background:#4f8fd6;rotate:45deg}
+.regras{margin-top:18px;border:1px solid var(--ln);border-radius:10px;background:var(--p);padding:0 14px}
+.regras summary{cursor:pointer;padding:12px 0;color:var(--c,var(--ouro));font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.75rem}
+.regras p{margin:0 0 14px;color:var(--mut);font-size:.88rem;line-height:1.6}
+@media(max-width:600px){.rl{width:64px;height:84px;font-size:2.4rem;margin:0 4px}.die{width:52px;height:52px}}
+
+/* ===== Animações, aviso e novos modos ===== */
+.selo{display:inline-block;background:#3fae80;color:#06150f;font-weight:800;letter-spacing:.08em;text-transform:uppercase;font-size:.62rem;padding:2px 8px;border-radius:999px;margin-right:6px}
+.aviso{color:#b9c0cf;font-size:.78rem;line-height:1.5;max-width:900px;margin:0 auto}
+.rodape{text-align:center;color:var(--mut);font-size:.72rem;padding:8px 16px 28px;line-height:1.5}
+#placar{flex-wrap:wrap;justify-content:flex-end}
+.pill.up b{animation:fu 1s}.pill.dn b{animation:fd 1s}
+@keyframes fu{30%{color:#3fae80;transform:scale(1.25)}}@keyframes fd{30%{color:#ef6b73;transform:scale(.85)}}
+.pill b{display:inline-block;transition:color .3s}
+.rank{margin:10px 0;display:flex;flex-direction:column;gap:5px}
+.rank div{display:flex;align-items:center;gap:10px;padding:7px 12px;border:1px solid var(--ln);border-radius:9px;background:var(--p);font-size:.85rem}
+.rank div.on{border-color:var(--ouro);background:var(--p2)}
+.rank span{color:var(--ouro);font-weight:700;width:26px}.rank em{flex:1;font-style:normal}.rank b{color:var(--m)}
+@keyframes sobe{from{opacity:0;transform:translateY(14px)}}
+#jogo>*{animation:sobe .4s both}#jogo>*:nth-child(2){animation-delay:.05s}#jogo>*:nth-child(3){animation-delay:.1s}#jogo>*:nth-child(4){animation-delay:.15s}
+.item{animation:sobe .45s both}
+.lista .item:nth-child(1){animation-delay:0.04s}.lista .item:nth-child(2){animation-delay:0.08s}.lista .item:nth-child(3){animation-delay:0.12s}.lista .item:nth-child(4){animation-delay:0.16s}.lista .item:nth-child(5){animation-delay:0.20s}.lista .item:nth-child(6){animation-delay:0.24s}.lista .item:nth-child(7){animation-delay:0.28s}.lista .item:nth-child(8){animation-delay:0.32s}.lista .item:nth-child(9){animation-delay:0.36s}.lista .item:nth-child(10){animation-delay:0.40s}
+.acao,.op,.fichas button,.item{transition:transform .15s,box-shadow .2s,filter .2s,border-color .2s}
+.acao:not(:disabled):hover{filter:brightness(1.1);transform:translateY(-1px)}
+.carta{animation:deal .38s cubic-bezier(.2,.8,.3,1.2) both}
+.carta:nth-child(2){animation-delay:.08s}.carta:nth-child(3){animation-delay:.16s}.carta:nth-child(4){animation-delay:.24s}.carta:nth-child(5){animation-delay:.32s}
+@keyframes deal{from{opacity:0;transform:translateY(-34px) rotate(-12deg) scale(.7)}}
+.pc:not(:disabled):hover .carta{transform:translateY(-8px);box-shadow:0 10px 18px #000a}
+.rv p{animation:fala .3s}@keyframes fala{from{opacity:0;transform:translateX(-8px)}}
+.visor.gira{animation:pulsa .6s ease-in-out infinite}
+@keyframes pulsa{50%{box-shadow:inset 0 0 40px #000c,0 0 0 4px #14110a,0 0 0 5px var(--c,#c9a24b),0 0 40px color-mix(in srgb,var(--c,#c9a24b) 70%,transparent)}}
+.gira .rl{animation:rolo .14s linear infinite}@keyframes rolo{0%{transform:translateY(-8px);filter:blur(1.5px)}100%{transform:translateY(8px);filter:blur(1.5px)}}
+.gira .die{animation:rola .4s linear infinite}@keyframes rola{to{transform:rotate(360deg)}}
+.crv{position:relative;overflow:hidden;min-height:250px;justify-content:center}
+.crv #cm{position:relative;z-index:2;transition:color .3s}
+.stars{position:absolute;inset:0;opacity:.8;background-image:radial-gradient(1.5px 1.5px at 20px 30px,#fff,transparent),radial-gradient(1px 1px at 70px 90px,#fffb,transparent),radial-gradient(1.5px 1.5px at 110px 20px,#c9a24b,transparent),radial-gradient(1px 1px at 40px 110px,#fff9,transparent);background-size:130px 130px;animation:drift 5s linear infinite}
+.crv.run .stars{animation-duration:.9s}
+@keyframes drift{to{background-position:0 130px}}
+.rkt{position:absolute;width:58px;height:58px;left:6%;bottom:8%;z-index:1;transition:left .1s linear,bottom .1s linear;filter:drop-shadow(0 0 10px #e0963a99)}
+.rkt .fl{transform-origin:12px 16px;animation:flama .09s infinite alternate}
+@keyframes flama{from{transform:scaleY(.8)}to{transform:scaleY(1.5)}}
+.rkt.boom{animation:boom .5s forwards}.rkt.ok{animation:sai .8s forwards}
+@keyframes boom{to{transform:scale(3);opacity:0}}@keyframes sai{to{transform:translate(120px,-160px) scale(.5);opacity:0}}
+.pf{position:absolute;width:10px;height:10px;border-radius:50%;background:radial-gradient(circle,#fff,#e0963a 55%,transparent 70%);margin:24px 0 0 24px;animation:pf .7s forwards;z-index:0}
+@keyframes pf{to{transform:scale(2.4);opacity:0}}
+.sp{position:absolute;width:7px;height:7px;border-radius:50%;background:#e0963a;animation:fly .8s forwards;z-index:1}
+@keyframes fly{to{transform:translate(var(--dx),var(--dy));opacity:0}}
+#gr.minas{grid-template-columns:repeat(5,1fr)!important;gap:8px;max-width:520px;margin-inline:auto}
+.minas .op{aspect-ratio:1;padding:0;display:grid;place-items:center;background:linear-gradient(180deg,#262b38,#171a22);border-color:#303646;min-height:0}
+.minas .op:disabled{opacity:1;cursor:default}
+.minas .op:not(:disabled):hover{border-color:var(--c);transform:translateY(-3px)}
+.minas .op.ok{background:radial-gradient(circle,#1f5660,#10252a);border-color:#34b3c7;animation:flip .45s}
+.minas .op.vermelho{animation:flip .4s}
+.minas .op.rev{opacity:.5;animation:flip .4s both}
+@keyframes flip{from{transform:rotateY(90deg) scale(.8)}to{transform:none}}
+.shake{animation:shake .45s}@keyframes shake{20%{transform:translate(-7px,3px)}40%{transform:translate(7px,-3px)}60%{transform:translate(-4px,2px)}80%{transform:translate(4px,-2px)}}
+@media(max-width:600px){.pill{padding:4px 8px;font-size:.72rem}.crv{min-height:210px}}
+@media(min-width:900px){.crv{min-height:300px}}
 </style>
 </head>
 <body>
 <header><h1><span class="lg">♠</span>BETBOY<b>2</b></h1><div id="placar"></div></header>
-<div class="aviso">Jogo fictício, só para diversão. Nenhum dinheiro real envolvido. Apenas para maiores de 18 anos.</div>
+<div class="aviso"><span class="selo">Sem dinheiro real</span>BetBoy é uma bet fictícia, só para diversão: as moedas são virtuais, não podem ser compradas, sacadas nem trocadas por dinheiro ou prêmios. Apenas para maiores de 18 anos.</div>
 <main><section id="home"></section><section id="jogo" hidden></section></main>
+<footer class="rodape">BetBoy 2 é uma simulação de apostas com moedas virtuais. Nenhum dinheiro real é apostado, ganho ou perdido.</footer>
 <div id="ov" hidden></div>
 <script>
 const $=s=>document.querySelector(s),rnd=n=>Math.floor(Math.random()*n);
 const D=matchMedia('(min-width:900px)');
 const EST={j:0,w:0};const estH=()=>`<div><b>${EST.j}</b>rodadas</div><div><b>${EST.w}</b>vitórias</div><div><b>${EST.j?Math.round(EST.w*100/EST.j):0}%</b>aproveit.</div>`;
-function chuva(){for(let i=0;i<16;i++){const e=document.createElement('span');e.className='fxm';e.textContent=i%3?'🪙':'✨';e.style.left=rnd(96)+'vw';e.style.animationDelay=(rnd(60)/100)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}}
-let P=[{n:'Jogador 1',s:1000},{n:'Jogador 2',s:1000}],modo=1,cur=0,saldo=1000,busy=0,atual=null,rsq=0;
-try{const j=JSON.parse(localStorage.getItem('betboy2'));if(j&&j.P&&j.P.length===2){P=j.P;modo=j.modo===2?2:1;cur=modo===2&&j.cur===1?1:0}}catch(e){}
+function chuva(){for(let i=0;i<16;i++){const e=document.createElement('span');e.className='fxm';e.classList.add(i%3?'cn':'df');e.style.left=rnd(96)+'vw';e.style.animationDelay=(rnd(60)/100)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}}
+let P=[{n:'Jogador 1',s:1000},{n:'Jogador 2',s:1000},{n:'Jogador 3',s:1000},{n:'Jogador 4',s:1000}],modo=1,cur=0,saldo=1000,busy=0,atual=null,rsq=0;
+try{const j=JSON.parse(localStorage.getItem('betboy2'));if(j&&j.P&&j.P.length===4){P=j.P;modo=[1,2,4].includes(j.modo)?j.modo:1;cur=j.cur<modo?j.cur:0}}catch(e){}
 saldo=P[cur].s;
 function salvar(){P[cur].s=saldo;try{localStorage.setItem('betboy2',JSON.stringify({P,modo,cur}))}catch(e){}placar()}
-function placar(){$('#placar').innerHTML=(modo===2?P:[P[0]]).map((p,i)=>`<span class="pill${modo===2&&i===cur?' on':''}">${modo===2?p.n.replace('Jogador ','J'):'🪙 Saldo'} <b>${p.s}</b></span>`).join('')}
-function passar(){const k=atual,n=1-cur;P[cur].s=saldo;$('#ov').innerHTML=`<div><p>Passe o aparelho para</p><h2>${P[n].n}</h2><button class="acao" id="ok">Estou pronto</button></div>`;$('#ov').hidden=false;
+const PV=[];function placar(){$('#placar').innerHTML=(modo>1?P.slice(0,modo):[P[0]]).map((p,i)=>{const o=PV[i];PV[i]=p.s;const c=o==null||o===p.s?'':p.s>o?' up':' dn';return `<span class="pill${modo>1&&i===cur?' on':''}${c}">${modo>1?p.n.replace('Jogador ','J'):'Saldo'} <b>${p.s}</b></span>`}).join('')}
+function passar(){const k=atual,n=(cur+1)%modo;P[cur].s=saldo;$('#ov').innerHTML=`<div><p>Passe o aparelho para</p><h2>${P[n].n}</h2><p>Saldo: ${P[n].s}</p><button class="acao" id="ok">Estou pronto</button></div>`;$('#ov').hidden=false;
 $('#ok').onclick=()=>{cur=n;saldo=P[cur].s;salvar();$('#ov').hidden=true;busy=0;abrir(null);if(k)abrir(k)}}
 const msg=t=>{$('#msg').textContent=t;const mc=$('#mc');if(mc){const e=/perdeu|banca venceu|Sem jogo|BOOM|Explodiu/i.test(t)?'lose':/ganhou|Você venceu|Acertou|Blackjack/i.test(t)?'win':'idle';if(e!=='idle'){EST.j++;if(e==='win'){EST.w++;chuva()}const sv=$('#stats');if(sv)sv.innerHTML=estH();const vz=$('#v');if(vz){vz.classList.remove('fw','fl');void vz.offsetWidth;vz.classList.add(e==='win'?'fw':'fl')}}mc.innerHTML=mascote(e);mc.className='';void mc.offsetWidth;mc.className=e}};
 const pagar=n=>{saldo+=n;salvar()};
-function pegar(){const v=Math.floor(+$('#bet').value);if(!(v>0))return msg('Digite um valor maior que zero.');if(v>saldo)return msg('Saldo insuficiente.');saldo-=v;salvar();return v}
-function fim(id){busy=0;const b=$('#'+id);if(b)b.disabled=false;if(saldo<1)msg($('#msg').textContent+' Acabaram as moedas: volte ao início e toque em Redefinir saldo.');if(modo===2)setTimeout(passar,2200)}
+function pegar(){const v=Math.floor(+$('#bet').value);if(!(v>0))return msg('Digite um valor maior que zero.');if(v>saldo)return msg('Saldo insuficiente.');saldo-=v;salvar();const vz=$('#v');if(vz)vz.classList.add('gira');return v}
+function fim(id){busy=0;const vz=$('#v');if(vz)vz.classList.remove('gira');const b=$('#'+id);if(b)b.disabled=false;if(saldo<1)msg($('#msg').textContent+' Acabaram as moedas: volte ao início e toque em Redefinir saldo.');if(modo>1)setTimeout(passar,2200)}
 const bet=()=>`<label for="bet">Valor da aposta</label><input id="bet" type="number" min="1" value="50" inputmode="numeric"><div class="fichas">${[10,50,100,'Tudo'].map(x=>`<button data-ch="${x}">${x}</button>`).join('')}</div>`;
 function sel(a,f){a.querySelectorAll('.op').forEach(b=>b.onclick=()=>{f(b.dataset.k);a.querySelectorAll('.op').forEach(x=>x.classList.toggle('sel',x===b))})}
 
@@ -285,59 +362,82 @@ a.innerHTML=`<div id="tmesa"></div><div id="tbet">${bet()}<button class="acao" i
 $('#tmesa').onclick=e=>{const b=e.target.closest('[data-c],[data-t]');if(!b||!esperar||b.disabled)return;const f=esperar;esperar=null;f(b.dataset.t?{t:b.dataset.t}:{t:'c',i:+b.dataset.c})};
 $('#go').onclick=async()=>{if(busy)return;const v=pegar();if(!v)return;busy=1;$('#tbet').hidden=true;await partida(v);$('#tbet').hidden=false;fim('go')}}
 
+const I={roleta:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.6 5.6l4.2 4.2M14.2 14.2l4.2 4.2M18.4 5.6l-4.2 4.2M9.8 14.2l-4.2 4.2"/>',blackjack:'<rect x="6" y="3" width="12" height="18" rx="2"/><path d="M12 8l2.2 3.2L12 14.4 9.8 11.2zM9 18h6"/>',poker:'<path d="M12 3c3.5 4.2 7 6 7 10a3.8 3.8 0 0 1-7 2 3.8 3.8 0 0 1-7-2c0-4 3.500-5.800 7-10z"/><path d="M9.500 21c1.500-.5 2-2 2.500-5 .5 3 1 4.500 2.500 5"/>',truco:'<rect x="3" y="6" width="10" height="14" rx="2" transform="rotate(-12 8 13)"/><rect x="11" y="4" width="10" height="14" rx="2" transform="rotate(10 16 11)"/>',slots:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M9 6v12M15 6v12M5.500 12h1.500M11 12h2M17 12h1.500M21 9h1.500v5H21"/>',crash:'<path d="M3 20h18M4 16l5-5 4 3 7-8"/><path d="M16 6h4v4"/>',minas:'<circle cx="11" cy="14" r="6"/><path d="M15 9.500l2-2M17.500 5l.5 2M19 6.500l-2 .5"/>',dados:'<rect x="4" y="4" width="16" height="16" rx="3"/><g fill="currentColor" stroke="none"><circle cx="9" cy="9" r="1.200"/><circle cx="15" cy="15" r="1.200"/><circle cx="15" cy="9" r="1.200"/><circle cx="9" cy="15" r="1.200"/></g>',bicho:'<circle cx="7" cy="10" r="2"/><circle cx="11" cy="6.500" r="2"/><circle cx="16" cy="7.500" r="2"/><circle cx="19" cy="12" r="1.800"/><path d="M8 18c0-3 2-5 4.500-5s5 2 4.500 5c-.4 2-2.500 2.500-4.500 2s-4.300-.5-4.500-2z"/>',moeda:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.500"/><path d="M12 9v6M10 10.500c0-1 4-1 4 .3S10 13 10 14c0 1.200 4 1.200 4 0"/>',gem:'<path d="M6 4h12l4 6-10 11L2 10zM2 10h20M9 4l-2 6 5 11 5-11-2-6"/>'};
+const ico=(n,c='')=>`<svg class="sv ${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${I[n]}</svg>`;
+const PIP={1:[[12,12]],2:[[7,7],[17,17]],3:[[7,7],[12,12],[17,17]],4:[[7,7],[17,7],[7,17],[17,17]],5:[[7,7],[17,7],[12,12],[7,17],[17,17]],6:[[7,7],[17,7],[7,12],[17,12],[7,17],[17,17]]};
+const die=n=>`<svg class="die" viewBox="0 0 24 24"><rect x="1.500" y="1.500" width="21" height="21" rx="4.500" fill="#f4efe3" stroke="#c9a24b"/>${PIP[n].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.900" fill="#15161a"/>`).join('')}</svg>`;
 /* ================= NOVOS JOGOS ================= */
 
 /* ---------- Caça-níquel ---------- */
-function slots(a){const S=['🍒','🍋','🔔','⭐','💎','7️⃣'],T={'🍒':5,'🍋':8,'🔔':12,'⭐':20,'💎':40,'7️⃣':100},r3=()=>[0,0,0].map(()=>S[rnd(6)]).join(' ');
-a.innerHTML=`<div class="visor" id="v">🎰 🎰 🎰</div><div class="tab">3 iguais: 🍒5x 🍋8x 🔔12x ⭐20x 💎40x 7️⃣100x · 2 iguais: 1,5x</div>${bet()}<button class="acao" id="go">Girar</button>`;
+function slots(a){const S=[['♥','#e0526a',5],['♦','#4f8fd6',8],['♣','#3fae80',12],['♠','#cfd6e4',20],['★','#e8b84a',40],['7','#e0963a',100]],rl=f=>f.map(i=>`<span class="rl" style="color:${S[i][1]}">${S[i][0]}</span>`).join(''),r3=()=>[rnd(6),rnd(6),rnd(6)];
+a.innerHTML=`<div class="visor" id="v">${rl([5,5,5])}</div><div class="tab">3 iguais: ${S.map(x=>`<b style="color:${x[1]}">${x[0]}</b> ${x[2]}x`).join(' · ')} · 2 iguais: 1,5x</div>${bet()}<button class="acao" id="go">Girar</button>`;
 $('#go').onclick=()=>{if(busy)return;const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;msg('Girando...');
-const vis=$('#v'),t=setInterval(()=>vis.textContent=r3(),80);
-setTimeout(()=>{clearInterval(t);const f=[0,0,0].map(()=>S[rnd(6)]);vis.textContent=f.join(' ');
-const m=f[0]===f[1]&&f[1]===f[2]?T[f[0]]:(f[0]===f[1]||f[1]===f[2]||f[0]===f[2])?1.5:0,g=Math.floor(v*m);
+const vis=$('#v'),t=setInterval(()=>vis.innerHTML=rl(r3()),80);
+setTimeout(()=>{clearInterval(t);const f=r3();vis.innerHTML=rl(f);
+const m=f[0]===f[1]&&f[1]===f[2]?S[f[0]][2]:(f[0]===f[1]||f[1]===f[2]||f[0]===f[2])?1.5:0,g=Math.floor(v*m);
 if(g){pagar(g);msg('Você ganhou '+g+' moedas! ('+m+'x)')}else msg('Nada dessa vez. Você perdeu '+v+'.');fim('go')},1600)}}
 
 /* ---------- Dados ---------- */
-function dados(a){let k0=null;const F='⚀⚁⚂⚃⚄⚅';
-a.innerHTML=`<div class="visor" id="v">⚀ ⚅</div><div class="opc">${[['lo','Menor que 7','2,3x'],['se','Exato 7','5,5x'],['hi','Maior que 7','2,3x']].map(([k,n,x])=>`<button class="op" data-k="${k}">${n}<small>${x}</small></button>`).join('')}</div>${bet()}<button class="acao" id="go">Rolar</button>`;
+function dados(a){let k0=null;
+a.innerHTML=`<div class="visor" id="v">${die(1)}${die(6)}</div><div class="opc">${[['lo','Menor que 7','2,3x'],['se','Exato 7','5,5x'],['hi','Maior que 7','2,3x']].map(([k,n,x])=>`<button class="op" data-k="${k}">${n}<small>${x}</small></button>`).join('')}</div>${bet()}<button class="acao" id="go">Rolar</button>`;
 sel(a,k=>k0=k);
 $('#go').onclick=()=>{if(busy)return;if(!k0)return msg('Escolha uma opção.');const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;msg('Rolando...');
-const vis=$('#v'),t=setInterval(()=>vis.textContent=F[rnd(6)]+' '+F[rnd(6)],90);
-setTimeout(()=>{clearInterval(t);const x=rnd(6),y=rnd(6),s=x+y+2,k=s<7?'lo':s>7?'hi':'se';vis.textContent=F[x]+' '+F[y];
+const vis=$('#v'),t=setInterval(()=>vis.innerHTML=die(rnd(6)+1)+die(rnd(6)+1),90);
+setTimeout(()=>{clearInterval(t);const x=rnd(6)+1,y=rnd(6)+1,s=x+y,k=s<7?'lo':s>7?'hi':'se';vis.innerHTML=die(x)+die(y);
 if(k===k0){const m=k==='se'?5.5:2.3,g=Math.floor(v*m);pagar(g);msg('Deu '+s+'! Você ganhou '+g+' moedas.')}else msg('Deu '+s+'. Você perdeu '+v+'.');fim('go')},1300)}}
 
 /* ---------- Crash ---------- */
-function crash(a){let t,m,v,on=0;
-a.innerHTML=`<div class="visor" id="v">1.00x</div><div class="dica">O multiplicador sobe até explodir. Saque antes!</div>${bet()}<button class="acao" id="go">Apostar</button>`;
+function crash(a){let t,m,v,on=0,tk=0;
+a.innerHTML=`<div class="visor crv" id="v"><div class="stars"></div><svg class="rkt" id="rk" viewBox="0 0 24 24"><g transform="rotate(45 12 12)"><path d="M12 2c3 3 4 7 4 11l-2 3h-4l-2-3c0-4 1-8 4-11z" fill="#e8ecf3" stroke="#9aa7bd" stroke-width=".6"/><circle cx="12" cy="9" r="1.8" fill="#4f8fd6"/><path d="M8 13l-3 4 3-1zM16 13l3 4-3-1z" fill="#e5604a"/><path class="fl" d="M10.5 16.5h3L12 22z" fill="#e0963a"/></g></svg><span id="cm">1.00x</span></div><div class="dica">O foguete sobe e o multiplicador cresce. Saque antes da explosão!</div>${bet()}<button class="acao" id="go">Apostar</button>`;
+const vis=$('#v'),rk=$('#rk'),cm=$('#cm');
+const pos=x=>{const p=Math.min(1,Math.log(x)/Math.log(15));rk.style.left=(6+p*72)+'%';rk.style.bottom=(8+p*56)+'%'};
+const puff=()=>{const i=document.createElement('i');i.className='pf';i.style.left=rk.style.left;i.style.bottom=rk.style.bottom;vis.appendChild(i);setTimeout(()=>i.remove(),700)};
 $('#go').onclick=()=>{const b=$('#go');
-if(on){clearInterval(t);on=0;const g=Math.floor(v*m);pagar(g);msg('Sacou em '+m.toFixed(2)+'x! Você ganhou '+g+' moedas.');b.textContent='Apostar';return fim('go')}
-if(busy)return;v=pegar();if(!v)return;busy=1;on=1;m=1;const cp=Math.max(1,Math.min(50,.96/(1-Math.random())));
-b.textContent='Sacar';msg('');const vis=$('#v');vis.className='visor';vis.textContent='1.00x';
-t=setInterval(()=>{m*=1.02;vis.textContent=m.toFixed(2)+'x';
-if(m>=cp){clearInterval(t);on=0;vis.textContent='💥 '+cp.toFixed(2)+'x';vis.className='visor vermelho';msg('Explodiu! Você perdeu '+v+'.');b.textContent='Apostar';fim('go')}},80)}}
+if(on){clearInterval(t);on=0;vis.classList.remove('run');rk.classList.add('ok');const g=Math.floor(v*m);pagar(g);msg('Sacou em '+m.toFixed(2)+'x! Você ganhou '+g+' moedas.');b.textContent='Apostar';return fim('go')}
+if(busy)return;v=pegar();if(!v)return;busy=1;on=1;m=1;tk=0;const cp=Math.max(1,Math.min(50,.96/(1-Math.random())));
+b.textContent='Sacar';msg('');vis.className='visor crv run';rk.setAttribute('class','rkt');pos(1);cm.textContent='1.00x';cm.style.color='';
+t=setInterval(()=>{m*=1.02;cm.textContent=m.toFixed(2)+'x';cm.style.color=m>5?'#e5604a':m>2?'#e0963a':'';pos(m);if(++tk%2)puff();
+if(m>=cp){clearInterval(t);on=0;vis.className='visor crv vermelho';rk.classList.add('boom');cm.textContent='✕ '+cp.toFixed(2)+'x';cm.style.color='';
+for(let i=0;i<14;i++){const e=document.createElement('i'),an=Math.PI*2*i/14,d=60+rnd(70);e.className='sp';e.style.left=rk.style.left;e.style.bottom=rk.style.bottom;e.style.margin='26px 0 0 26px';e.style.setProperty('--dx',Math.cos(an)*d+'px');e.style.setProperty('--dy',Math.sin(an)*d+'px');vis.appendChild(e);setTimeout(()=>e.remove(),900)}
+msg('Explodiu! Você perdeu '+v+'.');b.textContent='Apostar';fim('go')}},80)}}
 
 /* ---------- Minas ---------- */
-function minas(a){let v,mi,k,on=0;
-const mult=()=>{let x=.95;for(let i=0;i<k;i++)x*=(16-i)/(13-i);return x};
-a.innerHTML=`<div class="bichos minas" id="gr">${[...Array(16)].map((_,i)=>`<button class="op" data-i="${i}" disabled>?</button>`).join('')}</div><div class="dica" id="mm">3 minas escondidas em 16 casas. Cada 💎 aumenta o prêmio.</div>${bet()}<button class="acao" id="go">Começar</button>`;
-const encerra=()=>{on=0;[...$('#gr').children].forEach((b,i)=>{b.disabled=true;if(mi.includes(i)&&b.textContent==='?')b.textContent='💣'});$('#go').textContent='Começar';fim('go')};
-const saca=()=>{const g=Math.floor(v*mult());pagar(g);msg('Você ganhou '+g+' moedas!');encerra()};
-$('#gr').onclick=e=>{const b=e.target.closest('[data-i]');if(!on||!b||b.disabled)return;
-if(mi.includes(+b.dataset.i)){b.classList.add('vermelho');b.textContent='💣';msg('BOOM! Você perdeu '+v+'.');return encerra()}
-b.textContent='💎';b.disabled=true;k++;$('#mm').textContent='Sacando agora: '+Math.floor(v*mult())+' moedas ('+mult().toFixed(2)+'x)';if(k===13)saca()};
+function minas(a){let v,mi,k,on=0,nm=3;const N=25;
+const mult=()=>{let x=.95;for(let i=0;i<k;i++)x*=(N-i)/(N-nm-i);return x},mx=()=>k?mult():1;
+const info=()=>{$('#mi').innerHTML=`<div><b>${k||0}</b>gemas</div><div><b>${mx().toFixed(2)}x</b>multiplicador</div><div><b>${on&&k?Math.floor(v*mult()):0}</b>prêmio atual</div>`};
+a.innerHTML=`<div class="opc" id="nm">${[1,3,5,8].map(n=>`<button class="op${n===3?' sel':''}" data-n="${n}">${n}<small>${n===1?'mina':'minas'}</small></button>`).join('')}</div><div class="stats" id="mi"></div><div class="bichos minas" id="gr">${[...Array(N)].map((_,i)=>`<button class="op" data-i="${i}" disabled></button>`).join('')}</div><div class="dica" id="mm">Escolha quantas minas e comece. Mais minas, mais prêmio por gema.</div>${bet()}<button class="acao" id="go">Começar</button>`;
+k=0;info();
+$('#nm').onclick=e=>{const b=e.target.closest('[data-n]');if(!b||on||busy)return;nm=+b.dataset.n;[...$('#nm').children].forEach(x=>x.classList.toggle('sel',x===b));info()};
+const encerra=()=>{on=0;[...$('#gr').children].forEach((b,i)=>{b.disabled=true;if(mi.includes(i)&&!b.dataset.o){b.innerHTML=ico('minas','bm');b.classList.add('rev');b.style.animationDelay=(i*.03)+'s'}});$('#go').textContent='Começar';fim('go')};
+const saca=()=>{const g=Math.floor(v*mult());pagar(g);msg('Você ganhou '+g+' moedas! ('+mult().toFixed(2)+'x)');encerra()};
+$('#gr').onclick=e=>{const b=e.target.closest('[data-i]');if(!on||!b||b.disabled)return;b.dataset.o=1;
+if(mi.includes(+b.dataset.i)){b.classList.add('vermelho');b.innerHTML=ico('minas','bm');const g=$('#gr');g.classList.add('shake');setTimeout(()=>g.classList.remove('shake'),500);msg('BOOM! Você perdeu '+v+'.');return encerra()}
+b.innerHTML=ico('gem','gm');b.classList.add('ok');b.disabled=true;k++;info();$('#mm').textContent='Próxima gema leva a '+(()=>{k++;const x=mult();k--;return x.toFixed(2)})()+'x. Saque quando quiser.';if(k===N-nm)saca()};
 $('#go').onclick=()=>{if(on)return k?saca():msg('Abra ao menos uma casa.');
-if(busy)return;v=pegar();if(!v)return;busy=1;on=1;k=0;mi=[];while(mi.length<3){const x=rnd(16);if(!mi.includes(x))mi.push(x)}
-[...$('#gr').children].forEach(b=>{b.disabled=false;b.textContent='?';b.classList.remove('vermelho')});$('#go').textContent='Sacar';msg('')}}
+if(busy)return;v=pegar();if(!v)return;busy=1;on=1;k=0;mi=[];while(mi.length<nm){const x=rnd(N);if(!mi.includes(x))mi.push(x)}
+[...$('#gr').children].forEach(b=>{b.disabled=false;b.innerHTML='';b.style.animationDelay='';b.className='op';delete b.dataset.o});$('#go').textContent='Sacar';$('#mm').textContent=nm+' minas escondidas em '+N+' casas.';info();msg('')}}
 
 /* ---------- Menu e navegação ---------- */
-const JOGOS={roleta:['Roleta','Vermelho ou preto paga 2x',roleta,'🎡','Sorte'],blackjack:['Blackjack','Paga 3 para 2',blackjack,'🂡','Cartas'],poker:['Poker','Vídeo poker, até 250x',poker,'♠️','Cartas'],truco:['Truco','Contra o Rival, até 12 pontos',truco,'🃏','Duelo'],slots:['Caça-níquel','Até 100x com três 7',slots,'🎰','Sorte'],crash:['Crash','Saque antes de explodir',crash,'🚀','Nervos'],minas:['Minas','Evite as bombas e saque a tempo',minas,'💣','Estratégia'],dados:['Dados','Soma de dois dados, até 5,5x',dados,'🎲','Sorte'],bicho:['Jogo do bicho','Acertou o grupo, paga 18x',bicho,'🦁','Palpite'],moeda:['Cara ou coroa','Acertou, paga 1,9x',moeda,'🪙','Sorte']};
-function home(){$('#home').innerHTML=`<div class="modo"><button data-m="1" class="${modo===1?'sel':''}">1 jogador</button><button data-m="2" class="${modo===2?'sel':''}">2 jogadores</button></div><div class="heroi">${mascote('idle')}<p>${modo===2?'Cada um tem o seu saldo. Passe o aparelho depois de cada rodada.':'Fala, eu sou o BetBoy. Escolha uma mesa e boa sorte.'}</p></div><div class="stats" id="stats">${estH()}</div><div class="lista">${Object.entries(JOGOS).map(([k,j])=>`<button class="item${k===atual&&D.matches?' on':''}" data-j="${k}"><i class="ic">${j[3]}</i><span><b>${j[0]}</b><small>${j[1]}</small></span><u>${j[4]}</u><em>›</em></button>`).join('')}</div><button class="reset" id="rs">${rsq?'Toque de novo para confirmar':'Redefinir saldo'}</button>`;
+const JOGOS={
+roleta:['Roleta','Vermelho ou preto paga 2x',roleta,'roleta','Sorte','#d2495a','Escolha uma cor e gire a roleta (números de 0 a 14). Vermelho e preto pagam 2x; o zero verde paga 14x. A aposta é descontada ao girar.'],
+blackjack:['Blackjack','Paga 3 para 2',blackjack,'blackjack','Cartas','#3fae80','Chegue o mais perto de 21 sem estourar. Você pode pedir carta, parar ou dobrar (só com duas cartas). A banca compra até 17. Blackjack natural paga 3 para 2; vitória comum paga 1 para 1; empate devolve a aposta.'],
+poker:['Poker','Vídeo poker, até 250x',poker,'poker','Cartas','#4f8fd6','Receba cinco cartas, toque nas que quer manter e troque as demais uma única vez. A mão final define o prêmio, de par de valetes (1x) até royal flush (250x).'],
+truco:['Truco','Contra o Rival, até 12 pontos',truco,'truco','Duelo','#e0963a','Truco mineiro com manilhas fixas: 4 de paus, 7 de copas, ás de espadas e 7 de ouros. Vença duas de três vazas para levar a mão. Peça truco, seis, nove ou doze para aumentar o valor. Quem chega a 12 pontos vence e a partida paga 1,9x.'],
+slots:['Caça-níquel','Até 100x com três 7',slots,'slots','Sorte','#b574e0','Três rolos giram a cada rodada. Três símbolos iguais pagam de 5x a 100x conforme o símbolo; dois iguais pagam 1,5x. O sete é o prêmio máximo.'],
+crash:['Crash','Saque antes de explodir',crash,'crash','Nervos','#e5604a','Faça sua aposta e veja o foguete decolar enquanto o multiplicador sobe. Toque em Sacar antes da explosão para levar aposta vezes o multiplicador. Se explodir antes, a aposta é perdida. O ponto de explosão é aleatório e pode chegar a 50x.'],
+minas:['Campo minado','Escolha as minas, abra e saque',minas,'minas','Estratégia','#34b3c7','Tabuleiro 5x5 com 1, 3, 5 ou 8 minas escondidas (você escolhe). Cada gema encontrada aumenta o multiplicador; quanto mais minas, mais ele cresce. Saque quando quiser, mas se abrir uma mina perde a aposta. Abrir todas as casas seguras encerra a rodada com o prêmio máximo.'],
+dados:['Dados','Soma de dois dados, até 5,5x',dados,'dados','Sorte','#8fb04a','Dois dados são rolados. Aposte se a soma será menor que 7 (2,3x), exatamente 7 (5,5x) ou maior que 7 (2,3x).'],
+bicho:['Jogo do bicho','Acertou o grupo, paga 18x',bicho,'bicho','Palpite','#d1a24b','Escolha um dos 25 grupos de animais. Se o grupo sorteado for o seu, a aposta paga 18x.'],
+moeda:['Cara ou coroa','Acertou, paga 1,9x',moeda,'moeda','Sorte','#9aa7bd','Escolha cara ou coroa e lance a moeda. Acertando, você recebe 1,9x o valor apostado.']};
+const rank=()=>modo>1?`<div class="rank">${P.slice(0,modo).map((p,i)=>({p,i})).sort((a,b)=>b.p.s-a.p.s).map(({p,i},r)=>`<div class="${i===cur?'on':''}"><span>${r+1}º</span><em>${p.n}</em><b>${p.s}</b></div>`).join('')}</div>`:'';
+function home(){$('#home').innerHTML=`<div class="modo"><button data-m="1" class="${modo===1?'sel':''}">1 jogador</button><button data-m="2" class="${modo===2?'sel':''}">2 jogadores</button><button data-m="4" class="${modo===4?'sel':''}">4 jogadores</button></div><div class="heroi">${mascote('idle')}<p>${modo>1?'Cada um tem o seu saldo de moedas virtuais. Passe o aparelho depois de cada rodada.':'Fala, eu sou o BetBoy. Aqui tudo é de mentira: moedas virtuais, sem dinheiro real. Escolha uma mesa.'}</p></div><div class="stats" id="stats">${estH()}</div>${rank()}<div class="lista">${Object.entries(JOGOS).map(([k,j])=>`<button class="item${k===atual&&D.matches?' on':''}" data-j="${k}" style="--c:${j[5]}"><i class="ic" style="--c:${j[5]}">${ico(j[3])}</i><span><b>${j[0]}</b><small>${j[1]}</small></span><u>${j[4]}</u><em>›</em></button>`).join('')}</div><button class="reset" id="rs">${rsq?'Toque de novo para confirmar':'Redefinir saldo'}</button>`;
 $('#rs').onclick=()=>{if(!rsq){rsq=1;home();setTimeout(()=>{if(rsq){rsq=0;home()}},3000);return}rsq=0;P.forEach(p=>p.s=1000);saldo=P[cur].s;salvar();home()}}
 function abrir(k){if(busy)return;if(!k&&D.matches)k='roleta';atual=k;home();$('#home').hidden=!!k&&!D.matches;$('#jogo').hidden=!k;if(!k)return;const j=JOGOS[k];
-$('#jogo').innerHTML=`<button class="voltar" id="vt">‹ Início</button><div class="topo"><div><h2><span class=\"ic\">${j[3]}</span>${j[0]}</h2><p class=\"sub\">${j[1]}</p></div><div id="mc">${mascote('idle')}</div></div><div id="area"></div><div class="msg" id="msg"></div>`;
-$('#vt').onclick=()=>abrir(null);j[2]($('#area'))}
+$('#jogo').innerHTML=`<button class="voltar" id="vt">‹ Início</button><div class="topo"><div><h2><span class=\"ic\">${ico(j[3])}</span>${j[0]}</h2><p class=\"sub\">${j[1]}</p></div><div id="mc">${mascote('idle')}</div></div><div id="area"></div><div class="msg" id="msg"></div>`;
+$('#vt').onclick=()=>abrir(null);$('#jogo').style.setProperty('--c',j[5]);$('#jogo').insertAdjacentHTML('beforeend',`<details class="regras"><summary>Como jogar</summary><p>${j[6]}</p></details>`);j[2]($('#area'))}
 document.addEventListener('click',e=>{const t=e.target.closest('[data-j]');if(t)abrir(t.dataset.j);
 const c=e.target.closest('[data-ch]');if(c&&$('#bet'))$('#bet').value=c.dataset.ch==='Tudo'?saldo:c.dataset.ch;
-const m=e.target.closest('[data-m]');if(m&&!busy){P[cur].s=saldo;modo=+m.dataset.m;if(modo===1)cur=0;saldo=P[cur].s;salvar();home()}});
+const m=e.target.closest('[data-m]');if(m&&!busy){P[cur].s=saldo;modo=+m.dataset.m;if(cur>=modo)cur=0;saldo=P[cur].s;salvar();home()}});
 D.addEventListener('change',()=>{if(!busy)abrir(D.matches?atual:null)});
 salvar();abrir(null);
 </script>
