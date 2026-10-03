@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
@@ -220,6 +220,34 @@ h2 .ic .sv{width:20px;height:20px}
 .shake{animation:shake .45s}@keyframes shake{20%{transform:translate(-7px,3px)}40%{transform:translate(7px,-3px)}60%{transform:translate(-4px,2px)}80%{transform:translate(4px,-2px)}}
 @media(max-width:600px){.pill{padding:4px 8px;font-size:.72rem}.crv{min-height:210px}}
 @media(min-width:900px){.crv{min-height:300px}}
+.rvi svg{width:54px;height:54px;shape-rendering:crispEdges;display:block;margin:0 auto 4px}#rvs .op{padding:10px 4px}
+.desiste{display:block;margin:14px auto 0;background:none;border:1px solid var(--ln);color:var(--mut);border-radius:8px;padding:8px 14px}.desiste:hover{border-color:#ef6b73;color:#ef6b73}
+
+.chips{display:flex;gap:6px;flex-wrap:wrap;margin:12px 0 8px}.chips button{padding:6px 12px;border-radius:999px;background:var(--p);border:1px solid var(--ln);color:var(--mut);font-size:.78rem}.chips .on{border-color:var(--ouro);color:var(--ouro);background:var(--p2)}
+.pista{position:relative;margin:16px 6px;border:1px solid var(--c);border-radius:12px;background:linear-gradient(180deg,#1b3a2b,#0f2219);padding:6px 10px;box-shadow:inset 0 0 30px #000a,0 10px 30px #0009}
+.lane{display:flex;align-items:center;gap:8px;height:36px;border-bottom:1px dashed #ffffff22}.lane:last-child{border:0}
+.ln{width:18px;text-align:center;font-weight:700;color:var(--mut);font-size:.8rem}
+.trk{position:relative;flex:1;height:100%}.trk::after{content:'';position:absolute;right:0;top:3px;bottom:3px;width:7px;background:repeating-linear-gradient(#fff 0 6px,#111 6px 12px)}
+.rn{position:absolute;top:4px;left:0;width:28px;height:28px}.rn .sv{width:28px;height:28px;filter:drop-shadow(0 2px 3px #000)}
+.rc{flex-wrap:wrap}.rc .op{min-width:46%}
+.copos{position:relative;height:190px;margin:10px 0;background:radial-gradient(ellipse at 50% 100%,#3a2a14,transparent 70%)}
+.cup{position:absolute;bottom:14px;width:30%;height:130px;transition:left .25s ease;cursor:pointer}
+.cup .cv{position:absolute;inset:0;z-index:2;transition:transform .35s;color:var(--c)}.cup .cv svg{width:100%;height:100%}.cup .cv.up{transform:translateY(-62px)}
+.cup .bl{position:absolute;left:50%;bottom:4px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:radial-gradient(circle at 30% 30%,#fff,#e0526a 50%,#7a1f2d);display:none;z-index:1}.cup .bl.on{display:block}
+.scr{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:420px;margin:14px auto}
+.sc{aspect-ratio:1.3;border-radius:10px;border:1px solid #6b5527;background:repeating-linear-gradient(135deg,#8d93a1 0 8px,#a2a8b5 8px 16px);font:700 1.5rem Georgia,serif;color:#14110a}
+.sc.rv{background:linear-gradient(180deg,#171a22,#0f1013);animation:flip .35s}.sc.w{box-shadow:0 0 0 2px var(--ouro),0 0 18px #c9a24b99}
+.keno{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin:14px auto;max-width:460px}
+.kc{padding:12px 0;border-radius:8px;background:var(--p2);border:1px solid var(--ln);font-weight:700}.kc.on{background:var(--c);color:#0e0f12;border-color:var(--c)}.kc.hit{background:#3fae80;color:#06150f;animation:flip .35s}.kc.dr{background:#4a2327;color:#ef6b73;animation:flip .35s}
+.wheel{position:relative;width:min(300px,80vw);margin:16px auto}.wheel svg{width:100%;display:block;transition:transform 4.2s cubic-bezier(.15,.7,.1,1)}.wheel .ptr{position:absolute;left:50%;top:-8px;margin-left:-10px;border:10px solid transparent;border-top:20px solid var(--ouro);z-index:2;filter:drop-shadow(0 2px 3px #000)}
+@media(min-width:900px){#home{max-height:calc(100vh - 100px);overflow:auto;padding-right:6px}}
+.pav{display:inline-block}.pav svg{width:20px;height:20px;shape-rendering:crispEdges;vertical-align:middle;margin-right:4px}
+.chars{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:8px 0 14px}
+.ch{padding:8px 4px;border-radius:10px;background:var(--p);border:1px solid var(--ln);font-size:.72rem;color:var(--mut);text-align:center;transition:transform .15s,border-color .2s}
+.ch:hover{transform:translateY(-3px)}.ch span svg{width:46px;height:46px;shape-rendering:crispEdges;display:block;margin:0 auto 4px}
+.ch.on{border-color:var(--ouro);color:var(--ouro);box-shadow:0 0 14px #c9a24b44}
+.lbl2{margin:12px 0 4px;color:var(--mut);font-size:.75rem;text-transform:uppercase;letter-spacing:.1em}
+#ov>div{max-width:440px;width:100%}
 </style>
 </head>
 <body>
@@ -235,12 +263,12 @@ const EST={j:0,w:0};const estH=()=>`<div><b>${EST.j}</b>rodadas</div><div><b>${E
 function chuva(){for(let i=0;i<16;i++){const e=document.createElement('span');e.className='fxm';e.classList.add(i%3?'cn':'df');e.style.left=rnd(96)+'vw';e.style.animationDelay=(rnd(60)/100)+'s';document.body.appendChild(e);setTimeout(()=>e.remove(),2800)}}
 let P=[{n:'Jogador 1',s:1000},{n:'Jogador 2',s:1000},{n:'Jogador 3',s:1000},{n:'Jogador 4',s:1000}],modo=1,cur=0,saldo=1000,busy=0,atual=null,rsq=0;
 try{const j=JSON.parse(localStorage.getItem('betboy2'));if(j&&j.P&&j.P.length===4){P=j.P;modo=[1,2,4].includes(j.modo)?j.modo:1;cur=j.cur<modo?j.cur:0}}catch(e){}
-saldo=P[cur].s;
+P.forEach((p,i)=>{if(p.av==null)p.av=i});saldo=P[cur].s;
 function salvar(){P[cur].s=saldo;try{localStorage.setItem('betboy2',JSON.stringify({P,modo,cur}))}catch(e){}placar()}
-const PV=[];function placar(){$('#placar').innerHTML=(modo>1?P.slice(0,modo):[P[0]]).map((p,i)=>{const o=PV[i];PV[i]=p.s;const c=o==null||o===p.s?'':p.s>o?' up':' dn';return `<span class="pill${modo>1&&i===cur?' on':''}${c}">${modo>1?p.n.replace('Jogador ','J'):'Saldo'} <b>${p.s}</b></span>`}).join('')}
-function passar(){const k=atual,n=(cur+1)%modo;P[cur].s=saldo;$('#ov').innerHTML=`<div><p>Passe o aparelho para</p><h2>${P[n].n}</h2><p>Saldo: ${P[n].s}</p><button class="acao" id="ok">Estou pronto</button></div>`;$('#ov').hidden=false;
+const PV=[];function placar(){$('#placar').innerHTML=(modo>1?P.slice(0,modo):[P[0]]).map((p,i)=>{const o=PV[i];PV[i]=p.s;const c=o==null||o===p.s?'':p.s>o?' up':' dn';return `<span class="pill${modo>1&&i===cur?' on':''}${c}">${modo>1?`<i class="pav">${pm('idle',p.av)}</i>`+p.n.replace('Jogador ','J'):'Saldo'} <b>${p.s}</b></span>`}).join('')}
+function passar(){const k=atual,n=(cur+1)%modo;P[cur].s=saldo;$('#ov').innerHTML=`<div><p>Passe o aparelho para</p><h2>${P[n].n}</h2><p>Saldo: ${P[n].s}</p><div class="lbl2">Escolha seu personagem</div>${pickerH(n)}<button class="acao" id="ok">Estou pronto</button></div>`;$('#ov').hidden=false;
 $('#ok').onclick=()=>{cur=n;saldo=P[cur].s;salvar();$('#ov').hidden=true;busy=0;abrir(null);if(k)abrir(k)}}
-const msg=t=>{$('#msg').textContent=t;const mc=$('#mc');if(mc){const e=/perdeu|banca venceu|Sem jogo|BOOM|Explodiu/i.test(t)?'lose':/ganhou|Você venceu|Acertou|Blackjack/i.test(t)?'win':'idle';if(e!=='idle'){EST.j++;if(e==='win'){EST.w++;chuva()}const sv=$('#stats');if(sv)sv.innerHTML=estH();const vz=$('#v');if(vz){vz.classList.remove('fw','fl');void vz.offsetWidth;vz.classList.add(e==='win'?'fw':'fl')}}mc.innerHTML=mascote(e);mc.className='';void mc.offsetWidth;mc.className=e}};
+const msg=t=>{$('#msg').textContent=t;const mc=$('#mc');if(mc){const e=/perdeu|banca venceu|Sem jogo|BOOM|Explodiu/i.test(t)?'lose':/ganhou|Você venceu|Acertou|Blackjack/i.test(t)?'win':'idle';if(e!=='idle'){EST.j++;if(e==='win'){EST.w++;chuva()}const sv=$('#stats');if(sv)sv.innerHTML=estH();const vz=$('#v');if(vz){vz.classList.remove('fw','fl');void vz.offsetWidth;vz.classList.add(e==='win'?'fw':'fl')}}mc.innerHTML=pm(e,P[cur].av);mc.className='';void mc.offsetWidth;mc.className=e}};
 const pagar=n=>{saldo+=n;salvar()};
 function pegar(){const v=Math.floor(+$('#bet').value);if(!(v>0))return msg('Digite um valor maior que zero.');if(v>saldo)return msg('Saldo insuficiente.');saldo-=v;salvar();const vz=$('#v');if(vz)vz.classList.add('gira');return v}
 function fim(id){busy=0;const vz=$('#v');if(vz)vz.classList.remove('gira');const b=$('#'+id);if(b)b.disabled=false;if(saldo<1)msg($('#msg').textContent+' Acabaram as moedas: volte ao início e toque em Redefinir saldo.');if(modo>1)setTimeout(passar,2200)}
@@ -262,8 +290,13 @@ const EXPR={
  lose:[[6,8,4,1,BOCA],[5,9,1,1,BOCA],[10,9,1,1,BOCA],[13,5,1,2,'#6ab0ff']]
 };
 const RIV={'#a82f36':'#2f5d9e','#c9a24b':'#9aa3b2','#e8b98a':'#d9a678','#1b1e25':'#2a2237','#ece7da':'#8d93a1'};
-function mascote(e='idle',r=0){return '<svg viewBox="0 0 16 16" role="img" aria-label="'+(r?'Rival':'BetBoy')+'">'+BASE.concat(EXPR[e],r?[[6,8,4,1,'#1a1410']]:[]).map(([x,y,w,k,c])=>`<rect x="${x}" y="${y}" width="${w}" height="${k}" fill="${r?RIV[c]||c:c}"/>`).join('')+'</svg>'}
+const RIVS={4:{},1:RIV,2:{'#a82f36':'#2f8a57','#c9a24b':'#9aa3b2','#e8b98a':'#d9a678','#1b1e25':'#1f3a2b','#ece7da':'#8d93a1'},3:{'#a82f36':'#d4a72c','#c9a24b':'#e8e0c8','#e8b98a':'#e8c79a','#1b1e25':'#4a3f1c','#ece7da':'#c9b36a'}};
+function mascote(e='idle',r=0,pl=0){return '<svg viewBox="0 0 16 16" role="img" aria-label="'+(r?'Rival':'BetBoy')+'">'+BASE.concat(EXPR[e],r&&!pl?[[6,8,4,1,'#1a1410']]:[]).map(([x,y,w,k,c])=>`<rect x="${x}" y="${y}" width="${w}" height="${k}" fill="${r?(RIVS[r]||RIV)[c]||c:c}"/>`).join('')+'</svg>'}
 
+/* ---------- Personagens ---------- */
+const CHN=['BetBoy','Azul','Verde','Amarelo'],pm=(e,c)=>mascote(e,c,1);
+const pickerH=i=>`<div class="chars" data-pl="${i}">${[0,1,2,3].map(c=>`<button class="ch${P[i].av===c?' on':''}" data-ch2="${c}"><span>${pm('idle',c)}</span>${CHN[c]}</button>`).join('')}</div>`;
+function escolhe(pl,c){if(busy)return;const j=P.slice(0,modo).findIndex((p,k)=>k!==pl&&p.av===c);if(j>=0)P[j].av=P[pl].av;P[pl].av=c;salvar();const o=$('#ov .chars');if(o)o.outerHTML=pickerH(pl);if(atual)abrir(atual);else home()}
 /* ---------- Roleta ---------- */
 function roleta(a){let cor=null;
 a.innerHTML=`<div class="visor" id="v">?</div><div class="opc">${[['vermelho','Vermelho','2x'],['zero','Zero','14x'],['preto','Preto','2x']].map(([k,n,x])=>`<button class="op ${k}" data-k="${k}">${n}<small>${x}</small></button>`).join('')}</div>${bet()}<button class="acao" id="go">Girar</button>`;
@@ -326,20 +359,21 @@ const esp=ms=>new Promise(r=>setTimeout(r,ms));
 const dec=(r,m)=>{const y=r.filter(x=>x==='y').length,v=r.filter(x=>x==='r').length;
 if(y>1)return'y';if(v>1)return'r';if(r.length===2&&y+v===1)return y?'y':'r';
 if(r.length===3){if(y!==v)return y>v?'y':'r';return r.find(x=>x!=='t')||m}return null};
-function truco(a){let Y,R,pts,S,esperar=null;
+const PRS={0:{nm:'Rival Vermelho',d:'Malandro',tr:30,a1:80,a2:30,bl:8},1:{nm:'Rival Azul',d:'Equilibrado',tr:28,a1:85,a2:25,bl:0},2:{nm:'Rival Verde',d:'Cauteloso',tr:14,a1:70,a2:10,bl:0},3:{nm:'Rival Amarelo',d:'Atrevido',tr:45,a1:95,a2:50,bl:15}};
+function truco(a){let Y,R,pts,S,esperar=null,morto=0,RV=[0,1,2,3].find(c=>c!==P[cur].av),PS=PRS[RV];
 const escolher=()=>new Promise(r=>esperar=r),prox=s=>s===1?3:s+3,nomes={3:'Truco',6:'Seis',9:'Nove',12:'Doze'};
 const forte=()=>R.some(c=>forca(c)>=98)||R.filter(c=>forca(c)>=8).length>1;
-function draw(){const m=S.modo,tr=S.stake<12&&S.last!=='y';
+function draw(){if(morto||!$('#tmesa'))return;const m=S.modo,tr=S.stake<12&&S.last!=='y';
 const bt=m==='jogar'?`<button data-t="truco" ${tr?'':'disabled'}>${nomes[prox(S.stake)]||'Doze'}!</button><button data-t="corre">Correr</button>`:m==='resp'?'<button data-t="aceita">Aceitar</button><button data-t="corre">Correr</button>':'';
-$('#tmesa').innerHTML=`<div class="rv">${mascote(S.re,1)}<p>${S.fala}</p></div><div class="pt">Você <b>${pts[0]}</b> x <b>${pts[1]}</b> Rival · mão vale <b>${S.stake}</b> · ${S.res.map(w=>w==='y'?'V':w==='r'?'D':'E').join(' ')||'—'}</div><div class="mao">${R.map(()=>verso).join('')}</div><div class="mao">${S.mR?carta(S.mR):'<div class="slot"></div>'}${S.mY?carta(S.mY):'<div class="slot"></div>'}</div><div class="mao">${Y.map((c,i)=>`<button class="pc" data-c="${i}" ${m==='jogar'?'':'disabled'}>${carta(c)}</button>`).join('')}</div><div class="acoes">${bt}</div>`}
+$('#tmesa').innerHTML=`<div class="rv">${mascote(S.re,RV||4)}<p><b>${PS.nm}:</b> ${S.fala}</p></div><div class="pt"><i class="pav">${pm('idle',P[cur].av)}</i>${P[cur].n} <b>${pts[0]}</b> x <b>${pts[1]}</b> ${PS.nm} · mão vale <b>${S.stake}</b> · ${S.res.map(w=>w==='y'?'V':w==='r'?'D':'E').join(' ')||'—'}</div><div class="mao">${R.map(()=>verso).join('')}</div><div class="mao">${S.mR?carta(S.mR):'<div class="slot"></div>'}${S.mY?carta(S.mY):'<div class="slot"></div>'}</div><div class="mao">${Y.map((c,i)=>`<button class="pc" data-c="${i}" ${m==='jogar'?'':'disabled'}>${carta(c)}</button>`).join('')}</div><div class="acoes">${bt}</div><button class="desiste" data-d>${S.d?'Toque de novo para confirmar':'Desistir da partida'}</button>`}
 const say=(t,e='idle')=>{S.fala=t;S.re=e;draw()};
 async function vezJ(){while(1){S.modo='jogar';draw();const x=await escolher();S.modo='espera';
 if(x.t==='c'){S.mY=Y.splice(x.i,1)[0];draw();return}
 if(x.t==='corre')return{w:'r',p:S.stake};
 const n=prox(S.stake);say('Você pediu '+nomes[n]+'!');await esp(900);
-if(!(forte()?rnd(100)<85:rnd(100)<25)){say('Corri. Fica com a mão.','lose');await esp(900);return{w:'y',p:S.stake}}
+if(!(forte()?rnd(100)<PS.a1:rnd(100)<PS.a2)){say('Corri. Fica com a mão.','lose');await esp(900);return{w:'y',p:S.stake}}
 S.stake=n;S.last='y';say('Quero ver. Vale '+n+'.')}}
-async function vezR(){if(S.last!=='r'&&S.stake<12&&forte()&&rnd(100)<28){const n=prox(S.stake);say(nomes[n].toUpperCase()+'! Vale '+n+'.','win');S.modo='resp';draw();const x=await escolher();S.modo='espera';
+async function vezR(){if(S.last!=='r'&&S.stake<12&&(forte()||rnd(100)<PS.bl)&&rnd(100)<PS.tr){const n=prox(S.stake);say(nomes[n].toUpperCase()+'! Vale '+n+'.','win');S.modo='resp';draw();const x=await escolher();S.modo='espera';
 if(x.t==='corre')return{w:'r',p:S.stake};S.stake=n;S.last='r';say('Boa. Vamos ver.')}
 const o=[...R].sort((p,q)=>forca(p)-forca(q));
 S.mR=S.mY?(o.find(c=>forca(c)>forca(S.mY))||o[0]):o[S.res.length&&o.length>1?o.length-1:o.length>>1];
@@ -353,17 +387,19 @@ const fy=forca(S.mY),fr=forca(S.mR),w=fy>fr?'y':fr>fy?'r':'t';S.res.push(w);
 say(w==='y'?'Você fez a vaza.':w==='r'?'Fiz a vaza.':'Empatou.',w==='r'?'win':w==='y'?'lose':'idle');await esp(1300);
 const f=dec(S.res,S.mao);if(f)return{w:f,p:S.stake};if(w!=='t')lead=w}}
 async function partida(v){pts=[0,0];S={mao:rnd(2)?'y':'r',stake:1,res:[],fala:'Bora?',re:'idle',modo:'espera'};Y=[];R=[];msg('');
-while(pts[0]<12&&pts[1]<12){const r=await jogaMao();pts[r.w==='y'?0:1]+=r.p;
+while(!morto&&pts[0]<12&&pts[1]<12){const r=await jogaMao();if(morto)return;pts[r.w==='y'?0:1]+=r.p;
 if(r.w==='y')say('Você fez a mão: +'+r.p,'lose');else say('A mão é minha: +'+r.p,'win');await esp(1700);S.mao=S.mao==='y'?'r':'y'}
-Y=[];R=[];S.stake=1;S.res=[];S.mY=S.mR=null;
+if(morto)return;Y=[];R=[];S.stake=1;S.res=[];S.mY=S.mR=null;
 if(pts[0]>=12){const g=Math.floor(v*1.9);pagar(g);say('Você levou. Boa.','lose');msg('Você ganhou a partida! +'+(g-v)+' moedas.')}
 else{say('Ganhei! Tenta de novo.','win');msg('O Rival venceu a partida. -'+v+' moedas.')}}
-a.innerHTML=`<div id="tmesa"></div><div id="tbet">${bet()}<button class="acao" id="go">Começar partida (até 12)</button><p class="dica">Truco mineiro: as manilhas são fixas (4 de paus, 7 de copas, ás de espadas e 7 de ouros). Quem chega a 12 pontos vence e a vitória paga 1,9x.</p></div>`;
-$('#tmesa').onclick=e=>{const b=e.target.closest('[data-c],[data-t]');if(!b||!esperar||b.disabled)return;const f=esperar;esperar=null;f(b.dataset.t?{t:b.dataset.t}:{t:'c',i:+b.dataset.c})};
-$('#go').onclick=async()=>{if(busy)return;const v=pegar();if(!v)return;busy=1;$('#tbet').hidden=true;await partida(v);$('#tbet').hidden=false;fim('go')}}
+a.innerHTML=`<div id="tmesa"></div><div id="tbet"><label>Escolha o rival</label><div class="opc" id="rvs">${[0,1,2,3].filter(i=>i!==P[cur].av).map(i=>`<button class="op${i===RV?' sel':''}" data-r="${i}"><span class="rvi">${mascote('idle',i||4)}</span>${PRS[i].nm.replace('Rival ','')}<small>${PRS[i].d}</small></button>`).join('')}</div>${bet()}<button class="acao" id="go">Começar partida (até 12)</button><p class="dica">Truco mineiro: as manilhas são fixas (4 de paus, 7 de copas, ás de espadas e 7 de ouros). Quem chega a 12 pontos vence e a vitória paga 1,9x.</p></div>`;
+$('#rvs').onclick=e=>{const b=e.target.closest('[data-r]');if(!b||busy)return;RV=+b.dataset.r;PS=PRS[RV];[...$('#rvs').children].forEach(x=>x.classList.toggle('sel',x===b))};
+$('#tmesa').onclick=e=>{const d=e.target.closest('[data-d]');if(d){if(!S||!busy)return;if(!S.d){S.d=1;draw();setTimeout(()=>{if(!morto){S.d=0;draw()}},3000);return}morto=1;if(esperar){const f=esperar;esperar=null;f({t:'corre'})}busy=0;abrir(null);return}const b=e.target.closest('[data-c],[data-t]');if(!b||!esperar||b.disabled)return;const f=esperar;esperar=null;f(b.dataset.t?{t:b.dataset.t}:{t:'c',i:+b.dataset.c})};
+$('#go').onclick=async()=>{if(busy)return;const v=pegar();if(!v)return;busy=1;$('#tbet').hidden=true;await partida(v);if(morto)return;$('#tbet').hidden=false;fim('go')}}
 
 const I={roleta:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="3"/><path d="M12 3v6M12 15v6M3 12h6M15 12h6M5.6 5.6l4.2 4.2M14.2 14.2l4.2 4.2M18.4 5.6l-4.2 4.2M9.8 14.2l-4.2 4.2"/>',blackjack:'<rect x="6" y="3" width="12" height="18" rx="2"/><path d="M12 8l2.2 3.2L12 14.4 9.8 11.2zM9 18h6"/>',poker:'<path d="M12 3c3.5 4.2 7 6 7 10a3.8 3.8 0 0 1-7 2 3.8 3.8 0 0 1-7-2c0-4 3.500-5.800 7-10z"/><path d="M9.500 21c1.500-.5 2-2 2.500-5 .5 3 1 4.500 2.500 5"/>',truco:'<rect x="3" y="6" width="10" height="14" rx="2" transform="rotate(-12 8 13)"/><rect x="11" y="4" width="10" height="14" rx="2" transform="rotate(10 16 11)"/>',slots:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M9 6v12M15 6v12M5.500 12h1.500M11 12h2M17 12h1.500M21 9h1.500v5H21"/>',crash:'<path d="M3 20h18M4 16l5-5 4 3 7-8"/><path d="M16 6h4v4"/>',minas:'<circle cx="11" cy="14" r="6"/><path d="M15 9.500l2-2M17.500 5l.5 2M19 6.500l-2 .5"/>',dados:'<rect x="4" y="4" width="16" height="16" rx="3"/><g fill="currentColor" stroke="none"><circle cx="9" cy="9" r="1.200"/><circle cx="15" cy="15" r="1.200"/><circle cx="15" cy="9" r="1.200"/><circle cx="9" cy="15" r="1.200"/></g>',bicho:'<circle cx="7" cy="10" r="2"/><circle cx="11" cy="6.500" r="2"/><circle cx="16" cy="7.500" r="2"/><circle cx="19" cy="12" r="1.800"/><path d="M8 18c0-3 2-5 4.500-5s5 2 4.500 5c-.4 2-2.500 2.500-4.500 2s-4.300-.5-4.500-2z"/>',moeda:'<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5.500"/><path d="M12 9v6M10 10.500c0-1 4-1 4 .3S10 13 10 14c0 1.200 4 1.200 4 0"/>',gem:'<path d="M6 4h12l4 6-10 11L2 10zM2 10h20M9 4l-2 6 5 11 5-11-2-6"/>'};
 const ico=(n,c='')=>`<svg class="sv ${c}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">${I[n]}</svg>`;
+Object.assign(I,{cavalo:'<path d="M7 4v8a5 5 0 0 0 10 0V4"/><path d="M7 7h2M7 10h2M15 7h2M15 10h2"/>',carro:'<path d="M3 16v-3l2-5h14l2 5v3z"/><circle cx="7.5" cy="17" r="2"/><circle cx="16.5" cy="17" r="2"/>',copos:'<path d="M6 4h12l-1.5 16h-9z"/><path d="M6.5 9h11"/>',raspa:'<rect x="3" y="6" width="18" height="12" rx="2"/><path d="M7 14l3-4 3 4 3-4"/>',roda:'<circle cx="12" cy="12" r="9"/><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6L5.6 18.4"/>',keno:'<rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18M15 3v18M3 9h18M3 15h18"/>',escada:'<path d="M4 20h4v-4h4v-4h4V8h4"/><path d="M16 4h4v4"/>',bacara:'<rect x="3" y="5" width="10" height="14" rx="2"/><rect x="11" y="5" width="10" height="14" rx="2"/>'});I.galgo=I.bicho;
 const PIP={1:[[12,12]],2:[[7,7],[17,17]],3:[[7,7],[12,12],[17,17]],4:[[7,7],[17,7],[7,17],[17,17]],5:[[7,7],[17,7],[12,12],[7,17],[17,17]],6:[[7,7],[17,7],[7,12],[17,12],[7,17],[17,17]]};
 const die=n=>`<svg class="die" viewBox="0 0 24 24"><rect x="1.500" y="1.500" width="21" height="21" rx="4.500" fill="#f4efe3" stroke="#c9a24b"/>${PIP[n].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="1.900" fill="#15161a"/>`).join('')}</svg>`;
 /* ================= NOVOS JOGOS ================= */
@@ -417,25 +453,117 @@ $('#go').onclick=()=>{if(on)return k?saca():msg('Abra ao menos uma casa.');
 if(busy)return;v=pegar();if(!v)return;busy=1;on=1;k=0;mi=[];while(mi.length<nm){const x=rnd(N);if(!mi.includes(x))mi.push(x)}
 [...$('#gr').children].forEach(b=>{b.disabled=false;b.innerHTML='';b.style.animationDelay='';b.className='op';delete b.dataset.o});$('#go').textContent='Sacar';$('#mm').textContent=nm+' minas escondidas em '+N+' casas.';info();msg('')}}
 
+/* ================= MAIS JOGOS ================= */
+const CF={
+cavalos:{n:['Trovão','Relâmpago','Estrela do Sul','Pampa','Sombra','Aurora'],w:[22,20,18,16,14,10],c:['#d2495a','#4f8fd6','#e8b84a','#3fae80','#b574e0','#e0963a'],i:'cavalo',t:6},
+carrinhos:{n:['Fúria','Veloz','Raio','Turbo','Cometa'],w:[24,22,20,18,16],c:['#e5604a','#4f8fd6','#e8b84a','#3fae80','#b574e0'],i:'carro',t:5},
+galgos:{n:['Flecha','Vento','Bolt','Sombra','Faísca','Rajada'],w:[20,18,18,16,15,13],c:['#34b3c7','#d2495a','#e8b84a','#3fae80','#b574e0','#e0963a'],i:'galgo',t:5.5}};
+function corrida(a,cf){let esc=null;
+const rs=cf.n.map((n,i)=>({n,w:cf.w[i],c:cf.c[i]})),W=cf.w.reduce((x,y)=>x+y,0);rs.forEach(r=>r.o=Math.max(1.2,Math.round(.92*W/r.w*10)/10));
+const fo=o=>o.toFixed(1).replace('.',',')+'x';
+a.innerHTML=`<div class="pista" id="v">${rs.map((r,i)=>`<div class="lane"><span class="ln">${i+1}</span><div class="trk"><span class="rn" id="r${i}" style="color:${r.c}">${ico(cf.i)}</span></div></div>`).join('')}</div><div class="opc rc">${rs.map((r,i)=>`<button class="op" data-k="${i}"><b style="color:${r.c}">${i+1}</b> ${r.n}<small>${fo(r.o)}</small></button>`).join('')}</div>${bet()}<button class="acao" id="go">Largada</button>`;
+sel(a,k=>esc=+k);
+$('#go').onclick=()=>{if(busy)return;if(esc===null)return msg('Escolha o seu favorito.');const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;msg('Largada!');
+const pool=rs.map((r,i)=>i),ord=[];while(pool.length){let t=pool.reduce((x,i)=>x+rs[i].w,0)*Math.random(),j=0;for(;j<pool.length;j++){t-=rs[pool[j]].w;if(t<=0)break}ord.push(pool.splice(Math.min(j,pool.length-1),1)[0])}
+const T=[];ord.forEach((i,p)=>T[i]=cf.t+p*.5+Math.random()*.2);const ph=rs.map(()=>Math.random()*6),t0=performance.now();
+const step=now=>{const t=(now-t0)/1000;let fin=0;rs.forEach((r,i)=>{const x=Math.min(1,t/T[i]);let p=x<1?Math.min(.99,Math.max(0,x+Math.sin(t*3+ph[i])*.06*Math.sin(x*Math.PI))):1;$('#r'+i).style.left=(p*90)+'%';if(x>=1)fin++});
+if(fin<rs.length)return requestAnimationFrame(step);
+const w=ord[0];if(w===esc){const g=Math.floor(v*rs[w].o);pagar(g);msg(rs[w].n+' venceu! Você ganhou '+g+' moedas ('+fo(rs[w].o)+').')}else msg(rs[w].n+' venceu. Você perdeu '+v+'.');fim('go')};
+requestAnimationFrame(step)}}
+
+/* ---------- Jogo dos copos ---------- */
+function copos(a){let dif=1,ball,pick=0,v;const D=[[6,'2,5x',2.5,340],[10,'2,7x',2.7,270],[14,'2,9x',2.9,210]],CUP='<svg viewBox="0 0 60 70"><path d="M10 4h40l-6 62H16z" fill="currentColor" stroke="#0008" stroke-width="2"/><path d="M12 16h36" stroke="#0006" stroke-width="2"/></svg>',L=x=>x*33.3+1.5;
+a.innerHTML=`<div class="opc" id="df">${D.map((d,i)=>`<button class="op${i===1?' sel':''}" data-d="${i}">${['Fácil','Médio','Difícil'][i]}<small>${d[1]}</small></button>`).join('')}</div><div class="copos" id="cp">${[0,1,2].map(i=>`<div class="cup" id="c${i}" data-c="${i}" style="left:${L(i)}%"><div class="bl"></div><div class="cv">${CUP}</div></div>`).join('')}</div><div class="dica">Acompanhe a bolinha e depois escolha o copo certo.</div>${bet()}<button class="acao" id="go">Embaralhar</button>`;
+$('#df').onclick=e=>{const b=e.target.closest('[data-d]');if(!b||busy)return;dif=+b.dataset.d;[...$('#df').children].forEach(x=>x.classList.toggle('sel',x===b))};
+const cup=i=>$('#c'+i),lift=(i,u)=>cup(i).querySelector('.cv').classList.toggle('up',!!u);
+$('#go').onclick=async()=>{if(busy)return;v=pegar();if(!v)return;busy=1;$('#go').disabled=true;pick=0;const sl=[0,1,2],[n,,,sp]=D[dif];
+[0,1,2].forEach(i=>{cup(i).style.transitionDuration=sp/1000+'s';cup(i).querySelector('.bl').classList.remove('on');lift(i,0);cup(i).style.left=L(i)+'%'});
+ball=rnd(3);cup(ball).querySelector('.bl').classList.add('on');msg('Memorize a bolinha...');await esp(500);lift(ball,1);await esp(1100);lift(ball,0);await esp(500);msg('Embaralhando...');
+for(let k=0;k<n;k++){const p=rnd(3),q=(p+1+rnd(2))%3;[sl[p],sl[q]]=[sl[q],sl[p]];cup(p).style.left=L(sl[p])+'%';cup(q).style.left=L(sl[q])+'%';await esp(sp+40)}
+pick=1;msg('Onde está a bolinha? Toque em um copo.')};
+$('#cp').onclick=e=>{const c=e.target.closest('[data-c]');if(!c||!pick)return;pick=0;const i=+c.dataset.c;lift(ball,1);if(i!==ball)lift(i,1);
+setTimeout(()=>{if(i===ball){const g=Math.floor(v*D[dif][2]);pagar(g);msg('Acertou! Você ganhou '+g+' moedas.')}else msg('Errou. Você perdeu '+v+'.');fim('go')},1000)}}
+
+/* ---------- Raspadinha ---------- */
+function raspa(a){let v,cel,ab=0,on=0;const V=[2,5,10,25,100],COL=['#9aa7bd','#4f8fd6','#3fae80','#e0963a','#b574e0'];
+a.innerHTML=`<div class="scr" id="sc">${[0,1,2,3,4,5].map(i=>`<button class="sc" data-i="${i}" disabled>?</button>`).join('')}</div><div class="dica" id="mm">Encontre 3 valores iguais para ganhar. Prêmios de 2x a 100x.</div>${bet()}<button class="acao" id="go">Comprar raspadinha</button>`;
+const gera=()=>{const win=Math.random()<.13,cnt=[0,0,0,0,0];let c=[];if(win){const r=Math.random()*100,p=r<55?0:r<80?1:r<92?2:r<98?3:4;c=[p,p,p];cnt[p]=9}
+while(c.length<6){const x=rnd(5);if(cnt[x]>=2)continue;cnt[x]++;c.push(x)}for(let i=5;i>0;i--){const j=rnd(i+1);[c[i],c[j]]=[c[j],c[i]]}return c};
+const rev=i=>{const b=$('#sc').children[i];if(b.dataset.o)return;b.dataset.o=1;b.disabled=true;b.className='sc rv';b.innerHTML=`<span style="color:${COL[cel[i]]}">${V[cel[i]]}x</span>`;if(++ab===6)setTimeout(acaba,350)};
+const acaba=()=>{on=0;const k=[0,1,2,3,4].find(x=>cel.filter(y=>y===x).length===3);if(k!==undefined){[...$('#sc').children].forEach((b,i)=>{if(cel[i]===k)b.classList.add('w')});const g=v*V[k];pagar(g);msg('Três de '+V[k]+'x! Você ganhou '+g+' moedas.')}else msg('Sem trio. Você perdeu '+v+'.');$('#go').textContent='Comprar raspadinha';fim('go')};
+$('#sc').onclick=e=>{const b=e.target.closest('[data-i]');if(on&&b)rev(+b.dataset.i)};
+$('#go').onclick=()=>{if(on){[0,1,2,3,4,5].forEach(i=>setTimeout(()=>rev(i),i*130));return}
+if(busy)return;v=pegar();if(!v)return;busy=1;on=1;ab=0;cel=gera();[...$('#sc').children].forEach(b=>{b.disabled=false;b.className='sc';b.textContent='?';delete b.dataset.o});$('#go').textContent='Raspar tudo';msg('Toque nas casas para raspar.')}}
+
+/* ---------- Roda da fortuna ---------- */
+function roda(a){let ang=0;const M=[0,.5,0,1.5,0,2,0,.5,0,1.5,0,3,0,1,0,5],N=16,fm=w=>String(w).replace('.',',')+'x';
+const seg=i=>{const f=q=>(q-90)*Math.PI/180,P=(q,r)=>[110+r*Math.cos(q),110+r*Math.sin(q)],[x0,y0]=P(f(i*360/N),105),[x1,y1]=P(f((i+1)*360/N),105),[tx,ty]=P(f((i+.5)*360/N),78),w=M[i];
+return `<path d="M110 110L${x0.toFixed(1)} ${y0.toFixed(1)}A105 105 0 0 1 ${x1.toFixed(1)} ${y1.toFixed(1)}Z" fill="${w>=3?'#c9a24b':w>=1.5?'#3fae80':w>0?'#4f8fd6':'#2a2e3a'}" stroke="#0c0d10" stroke-width="1.5"/><text x="${tx.toFixed(1)}" y="${ty.toFixed(1)}" transform="rotate(${(i+.5)*360/N} ${tx.toFixed(1)} ${ty.toFixed(1)})" text-anchor="middle" dominant-baseline="middle" font-size="12" font-weight="700" fill="${w>0?'#0e0f12':'#8d93a1'}">${fm(w)}</text>`};
+a.innerHTML=`<div class="wheel"><i class="ptr"></i><svg id="wh" viewBox="0 0 220 220">${M.map((_,i)=>seg(i)).join('')}<circle cx="110" cy="110" r="14" fill="#14110a" stroke="#c9a24b" stroke-width="3"/></svg></div>${bet()}<button class="acao" id="go">Girar a roda</button>`;
+$('#go').onclick=()=>{if(busy)return;const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;msg('Girando...');const sg=rnd(N),tg=360-(sg*360/N+360/N/2);
+ang+=360*5+(((tg-ang%360)%360)+360)%360;$('#wh').style.transform='rotate('+ang+'deg)';
+setTimeout(()=>{const m=M[sg],g=Math.floor(v*m);if(g){pagar(g);msg(m>=1?'Caiu '+fm(m)+'! Você ganhou '+g+' moedas.':'Caiu '+fm(m)+'. Você recuperou '+g+' e perdeu '+(v-g)+'.')}else msg('Caiu 0x. Você perdeu '+v+'.');fim('go')},4300)}}
+
+/* ---------- Keno ---------- */
+function keno(a){const sl=new Set(),N=30;
+a.innerHTML=`<div class="keno" id="kn">${[...Array(N)].map((_,i)=>`<button class="kc" data-n="${i}">${i+1}</button>`).join('')}</div><div class="tab">Escolha 5 números · 2 acertos 1x · 3 acertos 1,5x · 4 acertos 6x · 5 acertos 100x</div><div class="dica" id="mm">0 de 5 escolhidos</div>${bet()}<button class="acao" id="go">Sortear</button>`;
+$('#kn').onclick=e=>{const b=e.target.closest('[data-n]');if(!b||busy)return;const n=+b.dataset.n;if(sl.has(n)){sl.delete(n);b.classList.remove('on')}else if(sl.size<5){sl.add(n);b.classList.add('on')}$('#mm').textContent=sl.size+' de 5 escolhidos'};
+$('#go').onclick=async()=>{if(busy)return;if(sl.size<5)return msg('Escolha 5 números.');const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;[...$('#kn').children].forEach(b=>b.classList.remove('hit','dr'));
+const pool=[...Array(N).keys()];for(let i=N-1;i>0;i--){const j=rnd(i+1);[pool[i],pool[j]]=[pool[j],pool[i]]}let h=0;
+for(const n of pool.slice(0,10)){await esp(280);const b=$('#kn').children[n];if(sl.has(n)){h++;b.classList.add('hit')}else b.classList.add('dr');$('#mm').textContent=h+' acertos até agora'}
+await esp(300);const m=[0,0,1,1.5,6,100][h],g=Math.floor(v*m);if(g){pagar(g);msg(h+' acertos! Você ganhou '+g+' moedas.')}else msg(h+' acertos. Você perdeu '+v+'.');fim('go')}}
+
+/* ---------- Escada (maior ou menor) ---------- */
+function escada(a){let v,c,tot=1,n=0,on=0;const rk=()=>1+rnd(13),cd=r=>carta({r:RK[r-1],s:ST[rnd(4)]}),M=x=>.95*13/x,fx=x=>x.toFixed(2).replace('.',',')+'x';
+a.innerHTML=`<div class="mesa"><div class="mao" id="ec"></div></div><div class="stats" id="mi"></div><div class="opc"><button class="op" id="hi"></button><button class="op" id="lo"></button></div>${bet()}<button class="acao" id="go">Começar</button>`;
+const upd=()=>{const hi=13-c,lo=c-1;$('#hi').innerHTML='Maior<small>'+(hi?fx(M(hi)):'-')+'</small>';$('#lo').innerHTML='Menor<small>'+(lo?fx(M(lo)):'-')+'</small>';$('#hi').disabled=!on||!hi;$('#lo').disabled=!on||!lo;$('#mi').innerHTML=`<div><b>${n}</b>acertos</div><div><b>${fx(tot)}</b>multiplicador</div><div><b>${on&&n?Math.floor(v*tot):0}</b>prêmio atual</div>`};
+c=rk();$('#ec').innerHTML=cd(c);upd();
+const chute=h=>{if(!on)return;const nx=rk(),ok=h?nx>c:nx<c,mm=M(h?13-c:c-1);$('#ec').innerHTML=cd(nx);
+if(ok){tot*=mm;n++;c=nx;upd();msg('Acertou! Continue ou saque.')}else{on=0;c=nx;upd();msg('Saiu '+RK[nx-1]+'. Você perdeu '+v+'.');$('#go').textContent='Começar';fim('go')}};
+$('#hi').onclick=()=>chute(1);$('#lo').onclick=()=>chute(0);
+$('#go').onclick=()=>{if(on){if(!n)return msg('Faça ao menos um palpite.');const g=Math.floor(v*tot);pagar(g);on=0;upd();msg('Você ganhou '+g+' moedas! ('+fx(tot)+')');$('#go').textContent='Começar';return fim('go')}
+if(busy)return;v=pegar();if(!v)return;busy=1;on=1;tot=1;n=0;c=rk();$('#ec').innerHTML=cd(c);upd();$('#go').textContent='Sacar';msg('A próxima carta será maior ou menor?')}}
+
+/* ---------- Bacará ---------- */
+function bacara(a){let k0=null;const bv=c=>{const i=RK.indexOf(c.r)+1;return i>9?0:i},tt=m=>m.reduce((x,c)=>x+bv(c),0)%10;
+a.innerHTML=`<div class="mesa"><div class="lbl">Jogador <b id="jb"></b></div><div class="mao" id="jm"></div><div class="lbl">Banca <b id="bb"></b></div><div class="mao" id="bm"></div></div><div class="opc">${[['j','Jogador','2x'],['b','Banca','1,95x'],['e','Empate','9x']].map(([k,n,x])=>`<button class="op" data-k="${k}">${n}<small>${x}</small></button>`).join('')}</div>${bet()}<button class="acao" id="go">Distribuir</button>`;
+sel(a,k=>k0=k);
+$('#go').onclick=async()=>{if(busy)return;if(!k0)return msg('Escolha em quem apostar.');const v=pegar();if(!v)return;busy=1;$('#go').disabled=true;const d=baralho(),J=[d.pop(),d.pop()],B=[d.pop(),d.pop()];
+if(tt(J)<8&&tt(B)<8){if(tt(J)<=5)J.push(d.pop());if(tt(B)<=5)B.push(d.pop())}
+$('#jm').innerHTML=J.map(c=>carta(c)).join('');$('#bm').innerHTML=B.map(c=>carta(c)).join('');$('#jb').textContent=tt(J);$('#bb').textContent=tt(B);await esp(900);
+const j=tt(J),b=tt(B),r=j>b?'j':b>j?'b':'e';let m=0;if(r===k0)m=r==='j'?2:r==='b'?1.95:9;else if(r==='e')m=1;const g=Math.floor(v*m);if(g)pagar(g);
+msg(r==='e'?'Empate! '+(k0==='e'?'Você ganhou '+g+' moedas.':'Aposta devolvida.'):(r==='j'?'Jogador':'Banca')+' venceu. '+(g?'Você ganhou '+g+' moedas.':'Você perdeu '+v+'.'));fim('go')}}
+
 /* ---------- Menu e navegação ---------- */
 const JOGOS={
 roleta:['Roleta','Vermelho ou preto paga 2x',roleta,'roleta','Sorte','#d2495a','Escolha uma cor e gire a roleta (números de 0 a 14). Vermelho e preto pagam 2x; o zero verde paga 14x. A aposta é descontada ao girar.'],
 blackjack:['Blackjack','Paga 3 para 2',blackjack,'blackjack','Cartas','#3fae80','Chegue o mais perto de 21 sem estourar. Você pode pedir carta, parar ou dobrar (só com duas cartas). A banca compra até 17. Blackjack natural paga 3 para 2; vitória comum paga 1 para 1; empate devolve a aposta.'],
 poker:['Poker','Vídeo poker, até 250x',poker,'poker','Cartas','#4f8fd6','Receba cinco cartas, toque nas que quer manter e troque as demais uma única vez. A mão final define o prêmio, de par de valetes (1x) até royal flush (250x).'],
-truco:['Truco','Contra o Rival, até 12 pontos',truco,'truco','Duelo','#e0963a','Truco mineiro com manilhas fixas: 4 de paus, 7 de copas, ás de espadas e 7 de ouros. Vença duas de três vazas para levar a mão. Peça truco, seis, nove ou doze para aumentar o valor. Quem chega a 12 pontos vence e a partida paga 1,9x.'],
+truco:['Truco','Contra o Rival, até 12 pontos',truco,'truco','Duelo','#e0963a','Truco mineiro com manilhas fixas: 4 de paus, 7 de copas, ás de espadas e 7 de ouros. Vença duas de três vazas para levar a mão. Peça truco, seis, nove ou doze para aumentar o valor. Quem chega a 12 pontos vence e a partida paga 1,9x. Cada jogador escolhe seu personagem (BetBoy vermelho, azul, verde ou amarelo) no menu e enfrenta um dos outros três, cada um com um estilo: o Azul é equilibrado, o Verde é cauteloso, o Amarelo é atrevido e blefa, e o Vermelho é malandro. Você pode desistir da partida desde a primeira rodada (a aposta é perdida).'],
 slots:['Caça-níquel','Até 100x com três 7',slots,'slots','Sorte','#b574e0','Três rolos giram a cada rodada. Três símbolos iguais pagam de 5x a 100x conforme o símbolo; dois iguais pagam 1,5x. O sete é o prêmio máximo.'],
 crash:['Crash','Saque antes de explodir',crash,'crash','Nervos','#e5604a','Faça sua aposta e veja o foguete decolar enquanto o multiplicador sobe. Toque em Sacar antes da explosão para levar aposta vezes o multiplicador. Se explodir antes, a aposta é perdida. O ponto de explosão é aleatório e pode chegar a 50x.'],
 minas:['Campo minado','Escolha as minas, abra e saque',minas,'minas','Estratégia','#34b3c7','Tabuleiro 5x5 com 1, 3, 5 ou 8 minas escondidas (você escolhe). Cada gema encontrada aumenta o multiplicador; quanto mais minas, mais ele cresce. Saque quando quiser, mas se abrir uma mina perde a aposta. Abrir todas as casas seguras encerra a rodada com o prêmio máximo.'],
 dados:['Dados','Soma de dois dados, até 5,5x',dados,'dados','Sorte','#8fb04a','Dois dados são rolados. Aposte se a soma será menor que 7 (2,3x), exatamente 7 (5,5x) ou maior que 7 (2,3x).'],
 bicho:['Jogo do bicho','Acertou o grupo, paga 18x',bicho,'bicho','Palpite','#d1a24b','Escolha um dos 25 grupos de animais. Se o grupo sorteado for o seu, a aposta paga 18x.'],
-moeda:['Cara ou coroa','Acertou, paga 1,9x',moeda,'moeda','Sorte','#9aa7bd','Escolha cara ou coroa e lance a moeda. Acertando, você recebe 1,9x o valor apostado.']};
-const rank=()=>modo>1?`<div class="rank">${P.slice(0,modo).map((p,i)=>({p,i})).sort((a,b)=>b.p.s-a.p.s).map(({p,i},r)=>`<div class="${i===cur?'on':''}"><span>${r+1}º</span><em>${p.n}</em><b>${p.s}</b></div>`).join('')}</div>`:'';
-function home(){$('#home').innerHTML=`<div class="modo"><button data-m="1" class="${modo===1?'sel':''}">1 jogador</button><button data-m="2" class="${modo===2?'sel':''}">2 jogadores</button><button data-m="4" class="${modo===4?'sel':''}">4 jogadores</button></div><div class="heroi">${mascote('idle')}<p>${modo>1?'Cada um tem o seu saldo de moedas virtuais. Passe o aparelho depois de cada rodada.':'Fala, eu sou o BetBoy. Aqui tudo é de mentira: moedas virtuais, sem dinheiro real. Escolha uma mesa.'}</p></div><div class="stats" id="stats">${estH()}</div>${rank()}<div class="lista">${Object.entries(JOGOS).map(([k,j])=>`<button class="item${k===atual&&D.matches?' on':''}" data-j="${k}" style="--c:${j[5]}"><i class="ic" style="--c:${j[5]}">${ico(j[3])}</i><span><b>${j[0]}</b><small>${j[1]}</small></span><u>${j[4]}</u><em>›</em></button>`).join('')}</div><button class="reset" id="rs">${rsq?'Toque de novo para confirmar':'Redefinir saldo'}</button>`;
+moeda:['Cara ou coroa','Acertou, paga 1,9x',moeda,'moeda','Sorte','#9aa7bd','Escolha cara ou coroa e lance a moeda. Acertando, você recebe 1,9x o valor apostado.'],
+cavalos:['Corrida de cavalos','Seis cavalos, odds de 4x a 9x',a=>corrida(a,CF.cavalos),'cavalo','Corrida','#c9a24b','Escolha o seu cavalo e dê a largada. Cada cavalo tem uma força diferente: os favoritos pagam menos e os azarões pagam mais (as odds aparecem em cada botão). Se o seu cavalo vencer, você recebe a aposta vezes a odd.'],
+carrinhos:['Corrida de carrinhos','Cinco carros na pista',a=>corrida(a,CF.carrinhos),'carro','Corrida','#e5604a','Escolha um carro e acompanhe a corrida. O desempenho muda a cada largada, mas os favoritos têm mais chance e pagam menos. Acertando o vencedor, você recebe a aposta vezes a odd do carro.'],
+galgos:['Corrida de galgos','Seis cães, uma linha de chegada',a=>corrida(a,CF.galgos),'galgo','Corrida','#34b3c7','Aposte em um dos seis galgos. As odds variam conforme a força de cada cão, e a corrida tem ultrapassagens. Se o seu galgo cruzar a linha primeiro, você ganha.'],
+copos:['Jogo dos copos','Siga a bolinha embaralhada',copos,'copos','Habilidade','#d1a24b','Memorize onde está a bolinha, acompanhe o embaralhamento e toque no copo certo. No Fácil são poucas trocas (2,5x); no Difícil, muitas e rápidas (2,9x).'],
+raspa:['Raspadinha','Três iguais ganham até 100x',raspa,'raspa','Sorte','#9aa7bd','Compre a raspadinha e raspe as seis casas, uma a uma ou todas de uma vez. Se encontrar três valores iguais, ganha esse valor vezes a aposta (2x, 5x, 10x, 25x ou 100x).'],
+roda:['Roda da fortuna','16 casas, prêmios até 5x',roda,'roda','Sorte','#b574e0','Gire a roda: o ponteiro mostra o multiplicador sorteado. Há casas de 0x, 0,5x, 1x, 1,5x, 2x, 3x e 5x. Com 0,5x você recupera metade da aposta.'],
+keno:['Keno','Escolha 5 números de 30',keno,'keno','Sorte','#3fae80','Marque exatamente 5 números entre 1 e 30. São sorteados 10 números. Com 2 acertos você recebe 1x, com 3 recebe 1,5x, com 4 recebe 6x e com 5 recebe 100x.'],
+escada:['Maior ou menor','Suba a escada de cartas',escada,'escada','Cartas','#4f8fd6','Uma carta é mostrada (de ás a rei, o ás é a menor). Aposte se a próxima será maior ou menor. Cada acerto multiplica o prêmio e você pode sacar quando quiser. Carta igual conta como erro.'],
+bacara:['Bacará','Jogador, Banca ou Empate',bacara,'bacara','Cartas','#d2495a','Aposte em Jogador (2x), Banca (1,95x) ou Empate (9x). Cada lado recebe duas cartas; ás vale 1 e figuras e 10 valem 0. Vence quem somar o valor mais próximo de 9 (só o último dígito conta). Com 5 ou menos o lado compra uma terceira carta, exceto se alguém tiver 8 ou 9. Empate devolve a aposta de quem apostou em Jogador ou Banca. (Versão simplificada.)']};
+const rank=()=>modo>1?`<div class="rank">${P.slice(0,modo).map((p,i)=>({p,i})).sort((a,b)=>b.p.s-a.p.s).map(({p,i},r)=>`<div class="${i===cur?'on':''}"><span>${r+1}º</span><i class="pav">${pm('idle',p.av)}</i><em>${p.n} · ${CHN[p.av]}</em><b>${p.s}</b></div>`).join('')}</div>`:'';
+let FIL='todos';const CATS={cor:['cavalos','carrinhos','galgos'],car:['blackjack','poker','truco','bacara','escada'],sor:['roleta','slots','dados','moeda','bicho','roda','keno','raspa','copos'],ar:['crash','minas']};
+const chipsH=()=>[['todos','Todos'],['cor','Corridas'],['car','Cartas'],['sor','Sorte'],['ar','Arcade']].map(([k,n])=>`<button data-f="${k}" class="${FIL===k?'on':''}">${n}</button>`).join('');
+function home(){$('#home').innerHTML=`<div class="modo"><button data-m="1" class="${modo===1?'sel':''}">1 jogador</button><button data-m="2" class="${modo===2?'sel':''}">2 jogadores</button><button data-m="4" class="${modo===4?'sel':''}">4 jogadores</button></div><div class="heroi">${pm('idle',P[cur].av)}<p>${modo>1?'Cada um tem o seu saldo de moedas virtuais. Passe o aparelho depois de cada rodada.':'Fala, eu sou o BetBoy. Aqui tudo é de mentira: moedas virtuais, sem dinheiro real. Escolha uma mesa.'}</p></div><div class="lbl2">Personagem de ${P[cur].n}</div>${pickerH(cur)}<div class="stats" id="stats">${estH()}</div>${rank()}<div class="chips">${chipsH()}</div><div class="lista">${Object.entries(JOGOS).filter(([k])=>FIL==='todos'||CATS[FIL].includes(k)).map(([k,j])=>`<button class="item${k===atual&&D.matches?' on':''}" data-j="${k}" style="--c:${j[5]}"><i class="ic" style="--c:${j[5]}">${ico(j[3])}</i><span><b>${j[0]}</b><small>${j[1]}</small></span><u>${j[4]}</u><em>›</em></button>`).join('')}</div><button class="reset" id="rs">${rsq?'Toque de novo para confirmar':'Redefinir saldo'}</button>`;
 $('#rs').onclick=()=>{if(!rsq){rsq=1;home();setTimeout(()=>{if(rsq){rsq=0;home()}},3000);return}rsq=0;P.forEach(p=>p.s=1000);saldo=P[cur].s;salvar();home()}}
 function abrir(k){if(busy)return;if(!k&&D.matches)k='roleta';atual=k;home();$('#home').hidden=!!k&&!D.matches;$('#jogo').hidden=!k;if(!k)return;const j=JOGOS[k];
-$('#jogo').innerHTML=`<button class="voltar" id="vt">‹ Início</button><div class="topo"><div><h2><span class=\"ic\">${ico(j[3])}</span>${j[0]}</h2><p class=\"sub\">${j[1]}</p></div><div id="mc">${mascote('idle')}</div></div><div id="area"></div><div class="msg" id="msg"></div>`;
+$('#jogo').innerHTML=`<button class="voltar" id="vt">‹ Início</button><div class="topo"><div><h2><span class=\"ic\">${ico(j[3])}</span>${j[0]}</h2><p class=\"sub\">${j[1]}</p></div><div id="mc">${pm('idle',P[cur].av)}</div></div><div id="area"></div><div class="msg" id="msg"></div>`;
 $('#vt').onclick=()=>abrir(null);$('#jogo').style.setProperty('--c',j[5]);$('#jogo').insertAdjacentHTML('beforeend',`<details class="regras"><summary>Como jogar</summary><p>${j[6]}</p></details>`);j[2]($('#area'))}
-document.addEventListener('click',e=>{const t=e.target.closest('[data-j]');if(t)abrir(t.dataset.j);
+document.addEventListener('click',e=>{const fc=e.target.closest('[data-f]');if(fc){FIL=fc.dataset.f;home()}const cc=e.target.closest('[data-ch2]');if(cc){escolhe(+cc.closest('[data-pl]').dataset.pl,+cc.dataset.ch2);return}const t=e.target.closest('[data-j]');if(t)abrir(t.dataset.j);
 const c=e.target.closest('[data-ch]');if(c&&$('#bet'))$('#bet').value=c.dataset.ch==='Tudo'?saldo:c.dataset.ch;
 const m=e.target.closest('[data-m]');if(m&&!busy){P[cur].s=saldo;modo=+m.dataset.m;if(cur>=modo)cur=0;saldo=P[cur].s;salvar();home()}});
 D.addEventListener('change',()=>{if(!busy)abrir(D.matches?atual:null)});
